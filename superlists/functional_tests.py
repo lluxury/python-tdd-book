@@ -6,4 +6,6 @@ os.environ['MOZ_HEADLESS'] = '1'  # <- this line
 browser = webdriver.Firefox()
 browser.get('http://localhost:8000')
 
-assert 'Django' in browser.title
+assert 'To-Do' in browser.title
+
+browser.quit()
