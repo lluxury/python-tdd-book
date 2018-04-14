@@ -40,7 +40,7 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         # inputbox.send_keys(Keys.Enter)
         time.sleep(1)
-        self.browser.get_screenshot_as_file('home_page.png')
+        # self.browser.get_screenshot_as_file('home_page.png')
 
 
         table = self.browser.find_element_by_id('id_list_table')
