@@ -24,6 +24,7 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self): 
         # check out it's homepage
         self.browser.get('http://localhost:8000')
+        # self.browser.get_screenshot_as_file('home_page.png')
 
         # notices the page title and header mention to-do lists
         self.assertIn('To-Do', self.browser.title)  
@@ -39,6 +40,8 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         # inputbox.send_keys(Keys.Enter)
         time.sleep(1)
+        self.browser.get_screenshot_as_file('home_page.png')
+
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr') 
