@@ -1,15 +1,22 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument("user-agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'")
+
 import time
 import unittest
-import os
-import sys
-os.environ['MOZ_HEADLESS'] = '1'  # <- this line
+# import os
+# import sys
+# os.environ['MOZ_HEADLESS'] = '1'  # <- this line
 
 class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):  
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Chrome(chrome_options=chrome_options, executable_path='/home/yann/chromedriver')
+        #  self.browser = webdriver.Firefox()
 
     def tearDown(self):  
         self.browser.quit()
