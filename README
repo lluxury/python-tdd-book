@@ -157,7 +157,7 @@ vi lists/tests.py
 # 判断响应的.content属性,原始字节 html,/html,To-Do
 # https://docs.djangoproject.com/en/1.7/topics/python3/
 # 运行单元测试,改动少量代码
-# 我决定装个新版,和网页一致 ok
+# 我决定装个新版,和网页一致 ok:
 
     # 填加参数
 python manage.py test
@@ -209,10 +209,74 @@ python manage.py test
 mkdir lists/templates
 touch !$/home.html
 
+vi lists/views.py
+# from django.shortcuts import render
+# HttpResponse 改成 render,输入参数,模板名
+
+python functional_tests.py
+# django.template.base.TemplateDoesNotExist: home.html
+
+# 注册应用
+vi superlists/settings.py
+# 在INSTALLED_APPS 添加lists
+
+python manage.py test
+self.assertTrue(html.endswith('</html>'))
+AssertionError: False is not true
+# 转用模板后在响应尾引入的额外空行 增加strip()
+# 理论上可以用 render_to_string 更新测试用例,但是失败了?
+
+
     # 关于重构
     # 接着修改首页
-      # 先写个功能测试
-      # 配置简单模板
-      # 注册应用
-      # 调整试图函数
+vi lists/templates/home.html
+# 增加h1
+
+# Message: Unable to locate element: [id="id_new_item"]
+# 增加输入框
+
+# AssertionError: '' != 'Enter a to-do item'
+# 增加占位文字
+
+# Message: Unable to locate element: [id="id_list_table"]
+# 写成表格的形式
+
+# any(row.text == '1: Buy peacock feathers' for row in rows) AssertionError: False is not true
+
+vi functional_tests.py
+# 修改功能测试,看到写入的备注,测试结束
+
     # 总结：TDD流程
+
+
+
+  #　保存用户输入
+  #  编写表单，发送POST请求
+  #  在服务器中处理POST请求
+  #  把Python变量传入模板中渲染
+  #  事不过三，三则重构
+  #  Django ORM和第一个模型
+  #    第一个数据库迁移
+  #    测试向前走得挺远
+  #    添加新字段就要创建新迁移
+  #  把POST请求中的数据存入数据库
+  #  处理完POST请求后重定向
+  #  在模板中渲染待办事项
+  #  使用迁移创建生产数据库
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
