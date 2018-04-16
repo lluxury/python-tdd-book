@@ -1,0 +1,218 @@
+# http://www.cnblogs.com/kuihua/p/5505621.html
+# http://selenium-python.readthedocs.io/index.html
+# 扩展作业
+
+# 原版是1.11,书籍是1.7
+
+yum install firefox
+git version
+pip3 -V
+python3 -V
+
+# python 3.4.2 -> django 1.7
+# 版本间需要匹配 14年9月1.7
+
+# sudo pip3 install django==1.7
+# sudo pip3 install --upgrade selenium
+
+pip install "django<1.12" "selenium<4"
+
+使用功能测试协助安装Django
+# 遵从测试山羊的教诲，没有测试什么也别做
+vi functional_test.py
+  from selenium import webdriver
+  
+  browser = webdriver.Firefox()
+  browser.get('http://localhost:8000')
+  
+  assert 'Django' in browser.title 
+python !$
+# 基础测试的写法
+
+# 让Django运行起来
+mkdir tdd_django
+django-admin.py startproject superlists .
+#不加点会有2个类似的目录
+
+python manage.py runserver
+python functional_test.py
+
+# 创建Git仓库
+mv functional_test.py superlists/
+cd superlists/
+git init .
+
+echo "db.sqlite3" >> .gitignore
+echo "geckodriver.log" >> .gitignore
+echo "virtualenv" >> .gitignore
+
+git add .
+git status
+
+git rm -r --cached superlists/__pycache__
+echo "__pycache__" >> .gitignore
+echo "*.pyc" >> .gitignore
+
+git add .gitignore
+git commit
+
+
+
+使用unittest模块扩展功能测试
+  # 使用功能测试驱动开发一个最简可用的应用
+python manage.py runserver
+python functional_test.py
+
+  # Python标准库中的unittest模块
+assert'To-Do' in browser.title, "Browser title was " + browser.title
+# 显示标题内容
+
+vi functional_test.py
+# 修改为类的形式 
+# 继承测试类,test_开头,setUp,tearDown测试前后,self.xx断言,self.fail提示,__main__方法,
+
+# https://docs.python.org/3/library/unittest.html  LiveServerTestCase
+
+  # 隐式等待
+# self.browser.implicitly_wait(3)
+  # 显示未定义,待调整
+
+  # 提交
+git diff
+git commit -a
+
+
+
+使用单元测试测试简单的首页
+  # 第一个Django应用，第一个单元测试
+# 以应用的方式组织代码,一个项目中放多个应用
+python manage.py startapp lists
+
+  # 单元测试及其与功能测试的区别
+# 功能测试,用户角度,外部
+# 单元测试,开发角度,内部
+
+# 先写功能,用户角度描述功能,功能测试失败后,编写代码让它通过
+# 单元测试失败后,最少代码让其通过,再功能测试
+# 其实不是很明白
+
+  # Django中的单元测试
+vi lists/tests.py 
+python manage.py test
+
+git status
+vim s
+git add lists/
+git diff --staged
+git commit -m "Add app for lists, with deliberately failing unit test"
+
+  # Django中的MVC、URL 和视图函数
+https://docs.djangoproject.com/en/1.11/faq/general/
+# url-http进入,决定某个视图函数处理,视图函数处理请求,返回响应
+
+# 测试内容:
+# 能否解析 /,对应到某个函数
+# 能否让视图返回一些HTML
+vi lists/tests.py  
+python manage.py test
+
+# 内置函数 resolve
+# home_page 定义的函数
+
+  # 终于可以编写一些应用代码了
+vi lists/views.py 
+python manage.py test
+
+# 阅读调用跟踪
+# 先查看调试的最底端,错误本身
+# 调试开头说明哪个测试失败了
+# 接着是导致失败的示例代码
+
+  # urls.py
+# main urls.py 主urls
+vi superlists/urls.py
+# url(r'^$', 'superlists.views.home', name='home'),
+url(r'^$', 'lists.views.home_page', name='home'),
+
+vi lists/views.py
+# home_page=None
+def home_page():
+    pass
+
+
+# 排查历程:
+# ImportError: cannot import name 'home_page'    #导入未定义函数 views
+# raise Resolver404({'tried': tried, 'path': new_path})   #找不到url映射 urls
+# Could not import superlists.views.home. Parent module superlists.views does not exist. #视图不存在urls
+# Could not import lists.views.home. View does not exist in module lists.views    # 函数名错误
+# Could not import lists.views.home_page. View is not callable    #home_page无法调用
+# 第一个测试通过,排错结束
+
+  # 为视图编写单元测试
+    # 新的测试函数
+vi lists/tests.py
+
+# 创建了一个HttpRequest对象, 请求网页时,看到的就是这个对象
+# HttpRequest对象传给home_page视图,得到响应
+# 判断响应的.content属性,原始字节 html,/html,To-Do
+# https://docs.djangoproject.com/en/1.7/topics/python3/
+# 运行单元测试,改动少量代码
+# 我决定装个新版,和网页一致 ok
+
+    # 填加参数
+python manage.py test
+# TypeError: home_page() takes 0 positional arguments but 1 was given
+vi lists/views.py
+
+    # 填加返回值
+python manage.py test
+# html = response.content.decode('utf8')
+# AttributeError: 'NoneType' object has no attribute 'content'
+vi lists/views.py
+
+    # 返回html标签头部
+#     self.assertTrue(html.startswith('<html>'))
+# AssertionError: False is not true
+
+    # 返回标题
+# AssertionError: '<title>To-Do lists</title>' not found in '<html>'
+
+    # 返回html尾部
+# self.assertTrue(html.endswith('</html>'))
+# AssertionError: False is not true
+
+python manage.py test
+# OK
+
+python functional_tests.py
+# AssertionError: Finish the test!
+
+  # 编写这些测试有什么用
+    # 编程就像从井里打水
+    # 使用Selenium测试用户交互
+python functional_tests.py
+
+# 扩充功能测试
+vi functional_tests.py
+# find_element_by_tag_name  找不到报错
+# find_elements_by_​tag_name    找不到反回空组
+# find_element_by_id
+# 还使用了keys类, 及any函数
+
+python functional_tests.py
+# Message: Unable to locate element: h1
+
+    # 遵守“不测试常量”规则，使用模板解决这个问题
+    # 使用模版重构
+# https://refactoring.com/ 重构
+python manage.py test
+mkdir lists/templates
+touch !$/home.html
+
+    # 关于重构
+    # 接着修改首页
+      # 先写个功能测试
+      # 配置简单模板
+      # 注册应用
+      # 调整试图函数
+    # 总结：TDD流程
