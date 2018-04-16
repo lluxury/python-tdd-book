@@ -253,24 +253,87 @@ vi functional_tests.py
 保存用户输入
   # 编写表单，发送POST请求
 # 提交表单
+vi lists/templates/home.html
+#<form method="POST">
+#    <input name="item_text" id="id_new_item" />
+
 # 面对面调试
+python functional_tests.py
+# 错误无法追踪,打印变量,改进错误,手动访问,延时
+
 # 开放访问权限
+# 我用的是headless的方式访问,打算修改配置让其他主机访问.
+# 发现被django限制了, 开发限制的方法如下:
+vi superlists/settings.py
+# ALLOWED_HOSTS = ['*'], 测试环境使用,生产请输入准确ip
+
 # CSRF错误
+# 打开页面后看到了著名的403 Forbidden, CSRF认证失败
+# http://www.cl.cam.ac.uk/~rja14/book.html
+
 # 模板标签
+vi lists/templates/home.html
+  {% csrf_token %}
+# 更新模板加入token标签
 
   # 在服务器中处理POST请求
 # 新的单元测试
+# 因为还没指定action属性,提交表单后默认返回之前渲染的页面"/"
+# 需要修改视图函数,先写一个新的单元测试
+vi lists/tests.py
+  def test_can_save_a_POST_request()
+
 # 想办法通过测试
+vi lists/views.py
+python manage.py test
+# 修改判断再测试
 
   # 把Python变量传入模板中渲染
 # 变量导入模板
+vi lists/templates/home.html
+#    <table id="id_list_table">
+#        <tr><td>{{ new_item_text }}</td></tr>  
+#    </table>
+
 # 测试传入值
-# 重视图函数
+vi lists/tests.py
+python manage.py test
+AssertionError: No templates used to render the response
+
+# 更新视图函数
+vi lists/views.py
+python manage.py test
+
 # 回归
+django.utils.datastructures.MultiValueDictKeyError: "'item_text'"
+vi lists/views.py
+  {
+        'new_item_text': request.POST.get('item_text', ''),
+    }
 # https://docs.python.org/3/library/stdtypes.html#dict.get
+
+python superlists/functional_tests.py
+# AssertionError: False is not true : New to-do item did not appear in table
+
 # 改进错误消息
+# 上节报的错误看不出太多内容,更新一下
+vi functional_tests.py
+  f"New to-do item did not appear in table. Contents were:\n{table.text}" 
+# 需要学习一下f的用法 格式字符串迭代?
+# https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals
+
 # 调整测试方法
+python superlists/functional_tests.py
+# AssertionError: False is not true : New to-do item did not appear in table.
+
+vi functional_tests.py
+# self.assertIn('1: Buy peacock feathers', [row.text for row in rows])
+AssertionError: '1: Buy peacock feathers' not found in ['Buy peacock feathers']
+
 # 作弊
+vi lists/templates/home.html
+#    <tr><td>1: {{ new_item_text }}</td></tr>
+# 修改模板,把1独立出来,骗过了测试
 
   # 事不过三，三则重构
 # 重复三次的代码需要重构
@@ -283,20 +346,6 @@ vi functional_tests.py
   # 处理完POST请求后重定向
   # 在模板中渲染待办事项
   # 使用迁移创建生产数据库
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
