@@ -21,6 +21,11 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):  
         self.browser.quit()
 
+    # def test_check_for_row_in_list_table(self, row_text):
+    #     table = self.browser.find_element_by_id('id_list_table')
+    #     rows = table.find_elements_by_tag_name('tr')
+    #     self.assertIn(row_text, row.text for row in rows)
+
     def test_can_start_a_list_and_retrieve_it_later(self): 
         # check out it's homepage
         self.browser.get('http://localhost:8000')
@@ -42,15 +47,17 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(1)
         # self.browser.get_screenshot_as_file('home_page.png')
 
-
         table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr') 
-        # rows = table.find_element_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows),
-            f"New to-do item did not appear in table. Contents were:]n{table.text}"
-        )
-        # self.assertIn('1: Buy peacock feathers', [row.text for row in rows])
+        rows = table.find_elements_by_tag_name('tr')
+        # rows = table.find_element_by_tag_name('tr') 
+        self.assertIn('1: Buy peacock feathers', [row.text for row in rows])
+        self.assertIn('2: Use peacock feathers to make a fly', [row.text for row in rows])
+
+        # self.assertTrue(
+        #     any(row.text == '1: Buy peacock feathers' for row in rows),
+        #     f"New to-do item did not appear in table. Contents were:]\n{table.text}"
+        # )
+        self.assertIn('1: Buy peacock feathers', [row.text for row in rows])
 
 
         self.fail('Finish the test!')
