@@ -406,13 +406,24 @@ vi lists/models.py
     # 添加新字段就要创建新迁移
 python manage.py makemigrations
 # 提示选2,不容许添加没有默认值的字段,退出修改?
-
-
+vi lists/models.py
+  text = models.TextField(default='')
+python manage.py makemigrations
+python manage.py test
 
   # 把POST请求中的数据存入数据库
   # 处理完POST请求后重定向
   # 在模板中渲染待办事项
   # 使用迁移创建生产数据库
+
+
+
+
+
+
+
+
+
 
 
 
