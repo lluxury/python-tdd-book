@@ -412,6 +412,23 @@ python manage.py makemigrations
 python manage.py test
 
   # 把POST请求中的数据存入数据库
+# 修改测试方法 test_can_save_a_POST_request()
+vi lists/tests.py
+# objects.count() 等价于 objects.all().count()
+# objects.first() 等价于 objects.all()[0]
+# 再测试
+# self.assertEqual(Item.objects.count(), 1) AssertionError: 0 != 1
+
+# 据说这个故障是期望值,目前不了解,回头再看
+# 修改视图 home_page()方法
+vi lists/views.py
+# 修改视图函数,之前直接显示在模板上,现在先存入数据库,再显示
+python manage.py test
+# 再测试,通过
+
+# 对views做一些重构
+
+
   # 处理完POST请求后重定向
   # 在模板中渲染待办事项
   # 使用迁移创建生产数据库
