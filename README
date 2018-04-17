@@ -335,10 +335,37 @@ vi lists/templates/home.html
 #    <tr><td>1: {{ new_item_text }}</td></tr>
 # 修改模板,把1独立出来,骗过了测试
 
+vi functional_tests.py
+python superlists/functional_tests.py
+# 增加第二条记录,测试报错
+
   # 事不过三，三则重构
 # 重复三次的代码需要重构
+vi superlists/functional_tests.py
+# 增加函数check_for_row_in_list_table()
+# 增加第二条记录的测试代码,使用新建测试函数测试清单显示
+# 到此为止,发现需要持久化储存
+
+#建一个新的测试类,记得导入Item模块
+vi lists/tests.py
+#class ItemModelTest(TestCase):
+#    ...
+# 创建对象,属性赋值,save(), .objects()方法, .count()方法
+# 单元测试,集成测试,单元测试不涉及数据库?
+
+python manage.py test
+# ImportError: cannot import name 'Item'
+vi lists/models.py
+#建一个Item类,这次不写Item=None了?
+
+python manage.py test
+# AttributeError: 'Item' object has no attribute 'save'
+
+
 
   # Django ORM和第一个模型
+#Object-Relational Mapper ORM
+
     # 第一个数据库迁移
     # 测试向前走得挺远
     # 添加新字段就要创建新迁移
