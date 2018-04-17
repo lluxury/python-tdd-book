@@ -433,6 +433,13 @@ vi lists/views.py
 # 需求增加
 # 不要保存空白,POST请求测试太长,显示多个待办事项,支持多个清单,但我还没想好怎么做, 先处理第一个问题吧
 
+# 处理空值
+vi lists/tests.py
+# 新建测试模块 test_only_saves_items_when_necessary(）
+
+vi lists/views.py
+# 修改视图函数，有POST方法就写入数据库，没有就置空
+python manage.py test
 
 
   # 处理完POST请求后重定向

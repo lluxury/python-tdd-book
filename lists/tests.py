@@ -12,6 +12,11 @@ class HomePageTest(TestCase):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'home.html')
 
+    def test_only_saves_item_when_necessary(self):
+        self.client.get('/')
+        self.assertEqual(Item.objects.count(), 0)
+        # self.assertEqual(Item.objects.content(), 0)
+
 #    def test_home_page_returns_correct_html(self):
 #        response = self.client.get('/')  
 #
