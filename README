@@ -443,6 +443,9 @@ python manage.py test
 
 
   # 处理完POST请求后重定向
+# 修改测试模块test_can_save_a_POST_request（）
+# 未确认，待分析重看
+
   # 在模板中渲染待办事项
   # 使用迁移创建生产数据库
 
