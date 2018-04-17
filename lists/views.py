@@ -8,5 +8,6 @@ def home_page(request):
     item.save()
 
     return render(request, 'home.html',{
-         'new_item_text': request.POST.get('item_text', ''),
+         'new_item_text': item.text
     })
+
