@@ -351,6 +351,7 @@ vi lists/tests.py
 #class ItemModelTest(TestCase):
 #    ...
 # 创建对象,属性赋值,save(), .objects()方法, .count()方法
+# https://docs.djangoproject.com/en/1.11/intro/tutorial01/
 # 单元测试,集成测试,单元测试不涉及数据库?
 
 python manage.py test
@@ -360,15 +361,54 @@ vi lists/models.py
 
 python manage.py test
 # AttributeError: 'Item' object has no attribute 'save'
-
+vi lists/models.py
+#报没有save属性,object改为继承model类?
 
 
   # Django ORM和第一个模型
 #Object-Relational Mapper ORM
 
     # 第一个数据库迁移
+django.db.utils.OperationalError: no such table: lists_item
+#之前修改之后报错,没有表 lists_item
+python manage.py makemigrations
+ls lists/migrations
+
+# 可以查看一下,新生成的文件,自动生成了建表语句
+
+#额外扩展,查看sqlite数据库
+ls db.sqlite3
+sqlite3 db.sqlite3
+.tables
+.schema xxx
+select * from xxx;
+.dump xxx
+.quit
+# 也可以在命令行里创建表,不过不是本次的讨论内容.
+
     # 测试向前走得挺远
+# 再次测试
+# AttributeError: 'Item' object has no attribute 'text'
+
+# 之前测试内容,保存2个代办事项,检查是否存入数据库
+# 为什么存入数据库的时候没有报错?
+# id做为表的主键是自动的,其他需要自己指定
+
+# https://docs.djangoproject.com/en/1.11/intro/tutorial01/#creating-models
+# https://docs.djangoproject.com/en/1.11/ref/models/fields/
+
+vi lists/models.py
+  text = models.TextField()
+# 补充对text的定义,再测试 
+# django.db.utils.OperationalError: no such column: lists_item.text
+# 原因,添加了新字段需要再进行一次测试
+
     # 添加新字段就要创建新迁移
+python manage.py makemigrations
+# 提示选2,不容许添加没有默认值的字段,退出修改?
+
+
+
   # 把POST请求中的数据存入数据库
   # 处理完POST请求后重定向
   # 在模板中渲染待办事项
