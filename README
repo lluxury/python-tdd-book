@@ -463,7 +463,7 @@ vi lists/templates/home.html
 #        <tr><td>1: {{ item.text }}</td></tr>
 #    {% endfor %}
 
-# <tr><td>1: {{ new_item_text }}</td></tr>
+# <tr><td>1: {{ new_item_text }}</td></tr> x
 # 还是写错了,哪怕抄了一次,不是自己写的东西没有回应
 # 建立多记录的测试, 修改模板, 修改视图函数添加变量,函数
 
@@ -474,8 +474,62 @@ python manage.py test       #通过
 python functional_tests.py  #失败
 
   # 使用迁移创建生产数据库
+python manage.py migrate
+python functional_tests.py
+vi lists/templates/home.html
 
+rm db.sqlite3
+python3 manage.py migrate --noinput
+python functional_tests.py 
 
+     # 完成最简可用的网站
+      #   确保功能测试之间相互隔离
+  # 修改功能测试的位置
+mkdir functional_tests
+touch functional_tests/__init__.py
+git mv functional_tests.py functional_tests/tests.py
+git status # shows the rename to functional_tests/tests.py and __init__.py
+
+python manage.py test functional_tests
+  # 只运行单元测试
+  
+  # 必要时做少量的设计
+    # YAGNI 你不需要这个
+    # REST 表现层状态转化
+  # 使用TDD 实现新设计
+# 修改功能测试
+  
+  # 逐步迭代，实现新设计
+# 为每一个清单添加唯一的URL和标识符
+  
+  # 使用Django测试客户端一起测试视图、模板和URL
+# 使用了测试客户端?
+  
+    # 一个新测试类
+    # 一个新URL
+    # 一个新视图函数
+# 重构
+
+    # 一个新模板，用于查看清单
+  # 用于添加待办事项的URL和视图
+    # 用来测试新建清单的测试类
+    # 用于新建清单的URL和视图
+    # 删除当前多余的代码和测试
+    # 让表单指向刚添加的新URL
+  # 调整模型
+    # 通过外键实现的关联
+    # 根据新模型定义调整其他代码
+  # 每个列表都应该有自己的URL
+    # 捕获URL中的参数
+    # 按照新设计调整new_list视图
+  # 还需要一个视图，把待办事项加入现有清单
+    # 小心霸道的正则表达式
+    # 最后一个新URL
+    # 最后一个新视图
+    # 如何在表单中使用那个URL
+  # 使用URL 引入做最后一次重构
+     
+     第二部分　Web开发要素
 
 
 
