@@ -444,7 +444,13 @@ python manage.py test
 
   # 处理完POST请求后重定向
 # 修改测试模块test_can_save_a_POST_request（）
-# 未确认，待分析重看
+# 待分析重看,被作者坑了,这块源码也测试不过,跟着改
+python manage.py test
+# AssertionError: 'A new list item' not found in ''
+
+vi lists/tests.py
+# 修改了test文件,测试模块分为两个,删除content内容,测试通过
+# 一个测试一件事,处理请求一个测试,重定向一个测试
 
   # 在模板中渲染待办事项
   # 使用迁移创建生产数据库
