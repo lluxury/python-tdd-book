@@ -490,7 +490,12 @@ touch functional_tests/__init__.py
 git mv functional_tests.py functional_tests/tests.py
 git status # shows the rename to functional_tests/tests.py and __init__.py
 
-python manage.py test functional_tests
+python3 manage.py test functional_tests
+
+from django.test import LiveServerTestCase
+# class NewVisitorTest(LiveServerTestCase):
+# 使用 self.live_server_url 代替 self.live_server_url
+
   # 只运行单元测试
   
   # 必要时做少量的设计
