@@ -451,8 +451,28 @@ python manage.py test
 vi lists/tests.py
 # 修改了test文件,测试模块分为两个,删除content内容,测试通过
 # 一个测试一件事,处理请求一个测试,重定向一个测试
+# 第二个小需求,POST的测试太长解决
 
   # 在模板中渲染待办事项
+# 测试显示多个项目,建立一个多项目的测试,并修改模板和视图文件
+vi lists/tests.py
+# test_displays_all_list_items()
+
+vi lists/templates/home.html
+#    {% for item in items %}
+#        <tr><td>1: {{ item.text }}</td></tr>
+#    {% endfor %}
+
+# <tr><td>1: {{ new_item_text }}</td></tr>
+# 还是写错了,哪怕抄了一次,不是自己写的东西没有回应
+# 建立多记录的测试, 修改模板, 修改视图函数添加变量,函数
+
+# 在模板中使用遍历句法
+#https://docs.djangoproject.com/en/1.11/topics/templates/
+
+python manage.py test       #通过
+python functional_tests.py  #失败
+
   # 使用迁移创建生产数据库
 
 
