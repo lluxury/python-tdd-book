@@ -509,7 +509,23 @@ from django.test import LiveServerTestCase
 # 使用 self.live_server_url 代替 self.live_server_url
 # 删除__main__代码段,删除导入 unittest,神奇
 
+git diff --staged -M
+
   # 只运行单元测试
+python manage.py test
+python manage.py test lists
+
+# https://github.com/mozilla/geckodriver/releases
+
+vi functional_tests/tests.py
+# time.sleep
+# https://martinfowler.com/articles/nonDeterminism.html
+# def wait_for_row_in_list_table()
+# 用一个超时函数来替代睡眠的设定
+# 设10秒超时,设循环,代入老的方法,成功则返回
+# 设定故障捕捉,两个时间相减,超时报警,不超时休眠
+
+
   
   # 必要时做少量的设计
     # YAGNI 你不需要这个
