@@ -474,8 +474,21 @@ python manage.py test       #通过
 python functional_tests.py  #失败
 
   # 使用迁移创建生产数据库
+# 功能测试失败,没有相应的表,因为测试程序是自己建的表
+vi python manage.py test
+https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+# 查看django中的数据库配置及相关的django文档
 
+python manage.py migrate
+# 正式生成数据库结构的命令
+python functional_tests.py
+# 代码还是要目测啊,多了一个 row.text都没发现
+AssertionError: '2: Use peacock feathers to make a fly' not found in ['1: Buy peacock feathers', '1: Use peacock feathers to make a fly']
 
+# 修改序号问题,还是在模板,看来用好模版很重要
+vi lists/templates/home.html
+rm db.sqlite3
+python manage.py migrate --noinput
 
 
 
