@@ -1,3 +1,5 @@
+from django.test import LiveServerTestCase
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
@@ -7,12 +9,12 @@ chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument("user-agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'")
 
 import time
-import unittest
+# import unittest
 # import os
 # import sys
 # os.environ['MOZ_HEADLESS'] = '1'  # <- this line
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):  
         self.browser = webdriver.Chrome(chrome_options=chrome_options, executable_path='/home/yann/chromedriver')
@@ -29,7 +31,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_can_start_a_list_and_retrieve_it_later(self): 
         # check out it's homepage
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
         # self.browser.get_screenshot_as_file('home_page.png')
 
         # notices the page title and header mention to-do lists
@@ -68,5 +70,3 @@ class NewVisitorTest(unittest.TestCase):
         self.fail('Finish the test!')
 
 
-if __name__ == '__main__':  
-    unittest.main(warnings='ignore')
