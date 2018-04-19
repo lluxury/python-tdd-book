@@ -526,6 +526,7 @@ vi functional_tests/tests.py
 # 设定故障捕捉,两个时间相减,超时报警,不超时休眠
 
 
+
   
   # 必要时做少量的设计
     # YAGNI 你不需要这个
