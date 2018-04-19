@@ -546,7 +546,8 @@ vi functional_tests/tests.py
 # 修改功能测试
 # 细化场景,提交代办事项后,跳转新页面,相应修改测试函数
 vi functional_tests/tests.py
-# 新增test_multiple_users_can_start_lists_at_different_urls函数,定义了跳转
+# 新增test_multiple_users_can_start_lists_at_different_urls函数,定义了跳转, 
+# 定义了多个场景,新用户,看不见之前的清单,提交,看到自己的,看不到之前的
 # https://docs.python.org/3/library/unittest.html
   
   # 逐步迭代，实现新设计
