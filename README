@@ -532,10 +532,22 @@ vi functional_tests/tests.py
 
   
   # 必要时做少量的设计
+# 分析一下,最简单情况下需要的功能,确定使用哪种设定方式
+# 迷你产品分析,场景
+# 每个用户有自己的清单,清单有多个事项,需要保存清单,需要唯一URL
+
     # YAGNI 你不需要这个
     # REST 表现层状态转化
+# https://www.obeythetestinggoat.com/book/appendix_rest_api.html
+/lists/new
+/lists/<list identifier>/add_item
+
   # 使用TDD 实现新设计
 # 修改功能测试
+# 细化场景,提交代办事项后,跳转新页面,相应修改测试函数
+vi functional_tests/tests.py
+# 新增test_multiple_users_can_start_lists_at_different_urls函数,定义了跳转
+# https://docs.python.org/3/library/unittest.html
   
   # 逐步迭代，实现新设计
 # 为每一个清单添加唯一的URL和标识符
