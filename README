@@ -525,7 +525,10 @@ vi functional_tests/tests.py
 # 设10秒超时,设循环,代入老的方法,成功则返回
 # 设定故障捕捉,两个时间相减,超时报警,不超时休眠
 
-
+# 测试一下,是否正确把刚才新增函数的row_tex变量改为foo,测试失败
+# AssertionError: 'foo' not found in ['1: Buy peacock feathers']
+# 再修改一下查找的id_new_item,
+# Message: Unable to locate element: [id="id_nothing"]
 
   
   # 必要时做少量的设计
