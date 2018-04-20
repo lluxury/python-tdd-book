@@ -551,6 +551,15 @@ vi functional_tests/tests.py
 # https://docs.python.org/3/library/unittest.html
   
   # 逐步迭代，实现新设计
+# URL出现在重定向POST请求之后
+vi lists/tests.py
+# 修改test_redirects_after_POST()
+# 写一个假设值 /lists/the-only-list-in-the-world/
+
+# 测试下lists看看,故障再修改视图试一下
+vi lists/views.py
+# 修改了视图输出后,过了,但功能测试又不过了,
+
 # 为每一个清单添加唯一的URL和标识符
   
   # 使用Django测试客户端一起测试视图、模板和URL
