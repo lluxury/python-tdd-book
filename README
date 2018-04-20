@@ -586,6 +586,15 @@ python manage.py test functional_tests/
 # AssertionError: 'Buy peacock feathers' unexpectedly found in 'Your To-Do list\n1: Buy peacock feathers'
 # 功能测试仍然失败
 
+vi lists/templates/home.html
+  <form method="POST" action="/">
+# 之前的POST操作后,并不需要变更地址,我们设了特殊的URL后
+# 提交完,地址就变成设定的地址了,修改,测试通过
+
+# 修改后,提交完,返回'/'路径,报了之前遇到的错误,测试完成
+# AssertionError: 'Buy peacock feathers' unexpectedly found in 'Your To-Do list\n1: Buy peacock feathers'
+
+
 # 重构
 
     # 一个新模板，用于查看清单
