@@ -559,15 +559,33 @@ vi lists/tests.py
 # 测试下lists看看,故障再修改视图试一下
 vi lists/views.py
 # 修改了视图输出后,过了,但功能测试又不过了,
-
-# 为每一个清单添加唯一的URL和标识符
+# 为每一个清单添加唯一的URL和标识符?
   
   # 使用Django测试客户端一起测试视图、模板和URL
-# 使用了测试客户端?
-  
     # 一个新测试类
+# 使用self.client属性来测试客户端, 屏蔽细节
+# AssertionError: 404 != 200 : Couldn't retrieve content: Response code was 404
+
     # 一个新URL
+# 设置唯一清单的URL
+vi superlists/urls.py
+# 设置路由,指向view_list函数,测试报错,没有这个函数
+# AttributeError: module 'lists.views' has no attribute 'view_list'
+
     # 一个新视图函数
+vi lists/views.py
+# ValueError: The view lists.views.view_list didn't return an HttpResponse object. It returned None instead
+# 又玩pass这个梗,果断报错
+
+
+# 把之前输出的代码复制过来,测试,通过了
+vi lists/views.py
+python manage.py test lists/
+
+python manage.py test functional_tests/
+# AssertionError: 'Buy peacock feathers' unexpectedly found in 'Your To-Do list\n1: Buy peacock feathers'
+# 功能测试仍然失败
+
 # 重构
 
     # 一个新模板，用于查看清单
