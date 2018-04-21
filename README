@@ -624,10 +624,12 @@ cp lists/templates/home.html lists/templates/list.html
 
 # AssertionError: '1: Buy milk' not found in ['1: Buy peacock feathers', '2: Buy
 # # milk'
-# 单元测试成功，功能测试报上述错误，与期望值相符
+# 单元测试成功，功能测试报上述错误，与期望值相符 
 
   # 用于添加待办事项的URL和视图
     # 用来测试新建清单的测试类
+# 打开lists/tests.py把 test_can_save_a_POST_request test_redirects_after_POST移到新的测试类
+
     # 用于新建清单的URL和视图
     # 删除当前多余的代码和测试
     # 让表单指向刚添加的新URL
