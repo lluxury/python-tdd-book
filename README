@@ -722,7 +722,25 @@ vi lists/views.py
 # 视力导入list模块，并插入相关语句后，测试通过
 
   # 每个列表都应该有自己的URL
+vi ists/tests.py 
+# 修改 ListViewTest 类下的测试函数
+# List.objects.create() 的使用，还不是很熟悉
+python3 manage.py test lists
+# AssertionError: 404 != 200 : Couldn't retrieve content: Response code was 404 (expected 200)
+# AssertionError: No templates used to render the response
+
     # 捕获URL中的参数
+vi superlists/urls.py
+    url(r'^lists/(.+)/$', views.view_list, name='view_list'),
+# 学习参数从URL传向视图的方法，虽然现在看到的并不是正确的方法
+
+# TypeError: view_list() takes 1 positional argument but 2 were given
+vi lists/views.py
+   def view_list(request, list_id):
+# 根据报错，手工添加一个参数
+# AssertionError: 1 != 0 : Response should not contain 'other list item 1'
+# 期望达成，继续下一部分
+
     # 按照新设计调整new_list视图
   # 还需要一个视图，把待办事项加入现有清单
     # 小心霸道的正则表达式
