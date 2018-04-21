@@ -693,6 +693,14 @@ python3 manage.py makemigrations
 # AttributeError: 'Item' object has no attribute 'list'
 
     # 通过外键实现的关联
+vi lists/models.py
+    list = models.TextField(default='')
+python3 manage.py test lists
+
+# django.db.utils.OperationalError: no such column: lists_item.list
+python manage.py makemigrations
+# AssertionError: 'List object' != <List: List object>
+
     # 根据新模型定义调整其他代码
   # 每个列表都应该有自己的URL
     # 捕获URL中的参数
