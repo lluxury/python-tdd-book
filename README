@@ -673,6 +673,25 @@ python manage.py test functional_tests/
 # milk不是feathers，期望达成，测试内容就是不能看到别人的待办事项
 
   # 调整模型
+vi lists/tests.py
+# from lists.models import Item, List
+# 导入list模块，并插入相关语句，测试，报找不到list模块
+
+# ImportError: cannot import name 'List'
+vi lists/models.py
+  class List(object)
+
+# AttributeError: 'List' object has no attribute 'save'
+vi lists/models.py
+  class List(models.Model):
+
+# django.db.utils.OperationalError: no such table: lists_list
+vi lists/models.py
+# 并不需要设 text 属性，对moudle的了解还不够
+
+python3 manage.py makemigrations
+# AttributeError: 'Item' object has no attribute 'list'
+
     # 通过外键实现的关联
     # 根据新模型定义调整其他代码
   # 每个列表都应该有自己的URL
