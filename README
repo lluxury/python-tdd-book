@@ -660,7 +660,18 @@ python manage.py test functional_tests/
 # 测试通过，期望达成
 
     # 删除当前多余的代码和测试
+vi lists/views.py
+python manage.py test lists/
+# 删除主页之前判断是POST就提交跳转代码
+
+vi lists/views.py
+# 删除测试 test_only_saves_​items_when_necessary()
+
     # 让表单指向刚添加的新URL
+# 功能测试失败，继续修改模板
+python manage.py test functional_tests/
+# milk不是feathers，期望达成，测试内容就是不能看到别人的待办事项
+
   # 调整模型
     # 通过外键实现的关联
     # 根据新模型定义调整其他代码
