@@ -741,7 +741,16 @@ vi lists/views.py
 # AssertionError: 1 != 0 : Response should not contain 'other list item 1'
 # 期望达成，继续下一部分
 
+vi lists/views.py
+# 修改视图函数，过滤所需值 list_id
+
     # 按照新设计调整new_list视图
+# ERROR: test_redirects_after_POST (lists.tests.NewListTest)
+# ValueError: invalid literal for int() with base 10:
+# 'the-only-list-in-the-world'
+vi lists/tests.py
+
+
   # 还需要一个视图，把待办事项加入现有清单
     # 小心霸道的正则表达式
     # 最后一个新URL
@@ -750,6 +759,31 @@ vi lists/views.py
   # 使用URL 引入做最后一次重构
      
      第二部分　Web开发要素
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -5,8 +5,9 @@ def home_page(request):
     return render(request, 'home.html')
 
 def view_list(request, list_id):
-    # pass
-    items = Item.objects.all()
+    list_ = List.objects.get(id=list_id)
+    items = Item.objects.filter(list=list_)
+    # items = Item.objects.all()
     return render(request, 'list.html', {'items': items})
 
 def new_list(request):
