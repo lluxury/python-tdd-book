@@ -596,6 +596,9 @@ vi lists/templates/home.html
 
 
 # 重构
+#删除 test_displays_all_list_items()测试模块
+vi lists/tests.py
+python manage.py test lists/
 
     # 一个新模板，用于查看清单
   # 用于添加待办事项的URL和视图
