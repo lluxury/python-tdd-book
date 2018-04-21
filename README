@@ -698,10 +698,22 @@ vi lists/models.py
 python3 manage.py test lists
 
 # django.db.utils.OperationalError: no such column: lists_item.list
-python manage.py makemigrations
+python3 manage.py makemigrations
+# NameError: name 'List' is not defined
+# 位置换一下才行，执行有先后次序的
+
 # AssertionError: 'List object' != <List: List object>
+vi lists/models.py
+    # list = models.ForeignKey(List, default=None)
+rm lists/migrations/0004_item_list.py
+python3 manage.py makemigrations
+# 抄text的果然还是不行，结果要删除重做
 
     # 根据新模型定义调整其他代码
+# django.db.utils.IntegrityError: NOT NULL constraint failed: lists_item.list_id
+# 测试后多处报错，说明老的测试模块不能适应每个待办事项拥有独立url的需要
+
+
   # 每个列表都应该有自己的URL
     # 捕获URL中的参数
     # 按照新设计调整new_list视图
