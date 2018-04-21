@@ -601,6 +601,31 @@ vi lists/tests.py
 python manage.py test lists/
 
     # 一个新模板，用于查看清单
+# 测试成功后，我们发现需要一个新的页面，来显待办事项，首页只显示输入框
+# 先写个新的测试来测新的模模板
+vi lists/tests.py
+python manage.py test lists/
+# AssertionError: No templates used to render the response
+# ok 可以修改禝和模板了
+
+vi lists/views.py
+# home.html改成 list.html
+# django.template.exceptions.TemplateDoesNotExist: list.html
+
+touch lists/templates/list.html
+# AssertionError: False is not true : Couldn't find 'itemey 1' in response
+# 放了一个空模板，开始报找不到的错误了
+
+cp lists/templates/home.html lists/templates/list.html
+# 删除首页的表格显示部分，只保留输入提交
+
+# AssertionError: No templates used to render the response
+# 测试报错，要特别注意redirect之类测试的'/'问题
+
+# AssertionError: '1: Buy milk' not found in ['1: Buy peacock feathers', '2: Buy
+# # milk'
+# 单元测试成功，功能测试报上述错误，与期望值相符
+
   # 用于添加待办事项的URL和视图
     # 用来测试新建清单的测试类
     # 用于新建清单的URL和视图
