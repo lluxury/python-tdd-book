@@ -649,6 +649,16 @@ vi lists/views.py
 # ValueError: The view lists.views.new_list didn't return an HttpResponse object. It returned None instead.
 # 似曾相识的故障，
 
+vi lists/views.py
+# return redirect 跳转位置
+# 还是要注意符号啊，'/'又一次被坑了，手打比复制好很多
+# self.assertEqual(Item.objects.count(), 1)
+# AssertionError: 0 != 1
+
+python manage.py test lists/
+python manage.py test functional_tests/
+# 测试通过，期望达成
+
     # 删除当前多余的代码和测试
     # 让表单指向刚添加的新URL
   # 调整模型

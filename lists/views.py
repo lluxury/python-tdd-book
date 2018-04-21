@@ -13,4 +13,8 @@ def view_list(request):
     return render(request, 'list.html', {'items': items})
 
 def new_list(request):
-    pass
+    # pass
+    Item.objects.create(text=request.POST['item_text'])
+    return redirect('/lists/the-only-list-in-the-world/')
+    # return redirect('lists/the-only-list-in-the-world/')
+	   
