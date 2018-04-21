@@ -713,6 +713,13 @@ python3 manage.py makemigrations
 # django.db.utils.IntegrityError: NOT NULL constraint failed: lists_item.list_id
 # 测试后多处报错，说明老的测试模块不能适应每个待办事项拥有独立url的需要
 
+vi lists/tests.py
+  # File "/tmp/book-example/lists/views.py", line 9, in new_list
+  #   Item.objects.create(text=request.POST['item_text'])
+# 把 list_ 写入test_displays_all_items（），测试后发现新的报错
+
+vi lists/views.py
+# 视力导入list模块，并插入相关语句后，测试通过
 
   # 每个列表都应该有自己的URL
     # 捕获URL中的参数
