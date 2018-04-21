@@ -628,9 +628,27 @@ cp lists/templates/home.html lists/templates/list.html
 
   # 用于添加待办事项的URL和视图
     # 用来测试新建清单的测试类
+vi lists/tests.py
 # 打开lists/tests.py把 test_can_save_a_POST_request test_redirects_after_POST移到新的测试类
+# 使用新方法 assertRedirects 替换掉两条语句
+# 不但移动了，内容还改变了，这一点记录失败
+
+python manage.py test lists/
+# AssertionError: 404 != 302 : Response didn't redirect as expected: Response code was 404 (expected 302)
+#   self.assertEqual(Item.objects.count(), 1)
+# AssertionError: 0 != 1
+# 报错表明，路由失败，提交也失败，下面开始恶意构建相关内容
 
     # 用于新建清单的URL和视图
+# 构建新的路由,并测试
+vi superlists/urls.py
+# AttributeError: module 'lists.views' has no attribute 'new_list'
+
+修改视图
+vi lists/views.py
+# ValueError: The view lists.views.new_list didn't return an HttpResponse object. It returned None instead.
+# 似曾相识的故障，
+
     # 删除当前多余的代码和测试
     # 让表单指向刚添加的新URL
   # 调整模型

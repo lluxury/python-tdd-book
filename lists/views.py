@@ -11,3 +11,6 @@ def view_list(request):
     # pass
     items = Item.objects.all()
     return render(request, 'list.html', {'items': items})
+
+def new_list(request):
+    pass
