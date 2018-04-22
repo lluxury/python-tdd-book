@@ -757,7 +757,20 @@ vi lists/tests.py
 # 功能测试同之前一样，修改顺利
 
   # 还需要一个视图，把待办事项加入现有清单
+# 先写两个测试函数，一个测试提交，一个测试跳转
+vi lists/tests.py
+
     # 小心霸道的正则表达式
+# AssertionError: 301 != 302 : Response didn't redirect as expected: Response code was 301 (expected 302)
+# 期望值是404，为什么会出现301
+vi superlists/urls.py
+# 修改正则，使用 \d+ 替换掉 .+
+
+# AssertionError: 0 != 1
+# AssertionError: 404 != 302 : Response didn't redirect as expected: Response
+# code was 404 (expected 302)
+# 再测试，报错更新
+
     # 最后一个新URL
     # 最后一个新视图
     # 如何在表单中使用那个URL
