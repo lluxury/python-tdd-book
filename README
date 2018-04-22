@@ -789,9 +789,15 @@ vi lists/views.py
 # 把new_list 和 view_list  的部分代码复制过来
 
 # self.assertEqual(Item.objects.count(), 1) AssertionError: 0 != 1
-
+# 写入POST语句，测试通过
 
     # 如何在表单中使用那个URL
+
+vi lists/templates/list.html
+# 修改模版，添加POST跳转 
+# <form method="POST" action="/lists/{{list.id}}/add_item">
+
+
   # 使用URL 引入做最后一次重构
      
      第二部分　Web开发要素
