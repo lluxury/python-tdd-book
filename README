@@ -749,7 +749,12 @@ vi lists/views.py
 # ValueError: invalid literal for int() with base 10:
 # 'the-only-list-in-the-world'
 vi lists/tests.py
+# 修改 new_list 函数的跳转指向
 
+# ValueError: invalid literal for int() with base 10: '{list_.id}'
+# self.client.get(f'/lists/{list_.id}/') 少了个f,而且对f的用法还是不太会用
+
+# 功能测试同之前一样，修改顺利
 
   # 还需要一个视图，把待办事项加入现有清单
     # 小心霸道的正则表达式

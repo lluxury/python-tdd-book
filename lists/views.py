@@ -11,8 +11,7 @@ def view_list(request, list_id):
     return render(request, 'list.html', {'items': items})
 
 def new_list(request):
-    # pass
     list_ = List.objects.create()
     Item.objects.create(text=request.POST['item_text'], list=list_)
-    return redirect('/lists/the-only-list-in-the-world/')
+    return redirect(f'/lists/{list_.id}/')
     # return redirect('lists/the-only-list-in-the-world/')
