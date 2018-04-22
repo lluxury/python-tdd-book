@@ -797,6 +797,19 @@ vi lists/templates/list.html
 # 修改模版，添加POST跳转 
 # <form method="POST" action="/lists/{{list.id}}/add_item">
 
+vi lists/tests.py
+  test_passes_correct_list_to_template(self)
+# KeyError: 'list'
+# 我们还没有把 list 打入模版
+
+vi lists/views.py
+# 修改 view_list() 函数
+# AssertionError: False is not true : Couldn't find 'itemey 1' in response
+
+vi lists/templates/list.html
+      {% for item in list.item_set.all %}
+# 修改模版的遍历方法
+# https://docs.djangoproject.com/en/1.11/topics/db/queries/#following-relationships-backward
 
   # 使用URL 引入做最后一次重构
      
