@@ -380,7 +380,7 @@ ls lists/migrations
 ls db.sqlite3
 sqlite3 db.sqlite3
 .tables
-.schema xxx
+.schema --indent
 select * from xxx;
 .dump xxx
 .quit
@@ -812,7 +812,21 @@ vi lists/templates/list.html
 # https://docs.djangoproject.com/en/1.11/topics/db/queries/#following-relationships-backward
 
   # 使用URL 引入做最后一次重构
-     
+# 重构URL
+cp superlists/urls.py lists/
+vi superlists/urls.py
+# 把 superlists/urls.py 复制到 lists目录去，修改原位置的 urls文件
+# 使用 include 方法引入lists 的urls文件
+vi lists/urls.py
+# 子 urls 文件继承项目传过来的url变量，分级处理，原lists部分域名省去 
+
+python3 manage.py test
+# 测试通过，开发完成
+git diff --staged
+
+python3 manage.py migrate
+# python3 manage.py migrage
+
      第二部分　Web开发要素
 
 
