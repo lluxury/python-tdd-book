@@ -911,8 +911,13 @@ vi lists/templates/base.html
   # col-md-6 col-md-offset-3 jumbotron
 
     # 大型输入框
+vi lists/templates/base.html
+  # class="form-control input-lg"
 
     # 样式化表格
+vi lists/templates/list.html
+  # <table id="id_list_table" class="table">
+
   # 使用自己编写的CSS
   # 补遗：collectstatic命令和其他静态目录
   # 没谈到的话题
