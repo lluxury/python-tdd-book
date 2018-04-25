@@ -929,8 +929,26 @@ vi lists/static/base.css
 python manage.py test functional_tests
 
   # 补遗：collectstatic命令和其他静态目录
-  # 没谈到的话题
+# 在生产上,不会使用django伺服静态文件,效率太低
+# 使用Nginx的性能更好
 
+# 目标,静态文件放置与版本库之外
+vi superlists/settings.py
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+python manage.py collectstatic
+ls static
+
+vi superlists/settings.py
+# 暂时注销管理后台
+rm -rf static/
+python manage.py collectstatic --noinput
+
+git diff
+echo /static >> .gitignore
+  # 没谈到的话题
+# 使用LESS定制Bootstrap
+# 使用{% static %} template tag
 
 
 
