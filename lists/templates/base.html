@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <title>To-Do lists</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet"></head>
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet"></head>
 
     <body>
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-md-offset-3">
+          <div class="col-md-6 col-md-offset-3
             <div class="text-center"> 
                 <h1>{% block header_text %}{% endblock %}</h1>
                 <form method="POST" action="{% block form_action %}{% endblock %}">

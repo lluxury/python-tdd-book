@@ -890,10 +890,25 @@ vi lists/templates/base.html
 # https://getbootstrap.com/docs/3.3/getting-started/
 
   # Django中的静态文件
+# 处理静态文件时需要知道,如何区分,文件位置
+vi superlists/settings.py
+  STATIC_URL = '/static/'
+# django会在各应用目录中找 static 目录
+vi lists/templates/base.html
+ls lists/static/bootstrap/css/bootstrap.min.css
+# 注意,lists后面的部分全部要写进去,前面是应用名
+
 # 换用StaticLiveServerTestCase
+python manage.py test functional_tests/
+vi functional_tests/tests.py
+
+# 测试通过,但是值有点不对,不知道是css的问题,还是无头浏览器的问题,回头修正吧
+# https://code.djangoproject.com/ticket/21227
 
   # 使用Bootstrap中的组件改进网站外观
     # 超大文本块
+vi lists/templates/base.html
+
     # 大型输入框
     # 样式化表格
   # 使用自己编写的CSS
