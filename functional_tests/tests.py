@@ -130,7 +130,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # def layout_and_styling(self):
         # edith goes to the home page
         self.browser.get(self.live_server_url)
-        self.browser.set_window_size(1400, 768)
+        self.browser.set_window_size(1024, 768)
 
         # she notices the the input box is nicely centered
         inputbox = self.browser.find_element_by_id('id_new_item')

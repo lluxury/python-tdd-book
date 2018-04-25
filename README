@@ -902,7 +902,7 @@ ls lists/static/bootstrap/css/bootstrap.min.css
 python manage.py test functional_tests/
 vi functional_tests/tests.py
 
-# 测试通过,但是值有点不对,不知道是css的问题,还是无头浏览器的问题,回头修正吧
+# 测试通过,但是值有点不对,不知道是css的问题,还是无头浏览器的问题,回头修正吧 原因遗漏</head>
 # https://code.djangoproject.com/ticket/21227
 
   # 使用Bootstrap中的组件改进网站外观
@@ -919,6 +919,15 @@ vi lists/templates/list.html
   # <table id="id_list_table" class="table">
 
   # 使用自己编写的CSS
+vi lists/templates/base.html
+# 插入一个link
+
+vi lists/static/base.css
+# 定义一个属性,分离配置的写法,值注意,框中
+# https://coding.smashingmagazine.com/2013/03/customizing-bootstrap/
+
+python manage.py test functional_tests
+
   # 补遗：collectstatic命令和其他静态目录
   # 没谈到的话题
 
