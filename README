@@ -882,6 +882,12 @@ vi lists/templates/base.html
 # 头部集成,不是很明白,先照着做
 
 # 行和列
+vi lists/templates/base.html
+  # container 定义固定宽度
+  # row 定义列
+  # col-md-6 col-md-offset-3
+# 中屏6列,右侧偏移3
+# https://getbootstrap.com/docs/3.3/getting-started/
 
   # Django中的静态文件
 # 换用StaticLiveServerTestCase
