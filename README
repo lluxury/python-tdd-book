@@ -908,8 +908,10 @@ vi functional_tests/tests.py
   # 使用Bootstrap中的组件改进网站外观
     # 超大文本块
 vi lists/templates/base.html
+  # col-md-6 col-md-offset-3 jumbotron
 
     # 大型输入框
+
     # 样式化表格
   # 使用自己编写的CSS
   # 补遗：collectstatic命令和其他静态目录
