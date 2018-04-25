@@ -949,10 +949,55 @@ echo /static >> .gitignore
   # 没谈到的话题
 # 使用LESS定制Bootstrap
 # 使用{% static %} template tag
+# 使用npm 和 bower
 
 
 
+使用过渡网站测试部署
+# obeythetestinggoat@gmail.com
 
+# 列表:
+# 修改功能测试
+# 假设服务器
+# git代码上传
+# Django过渡域名部署
+# python虚拟环境
+# 使用功能测试
+# Gunicorn,Upstart,套接字
+# 自动化脚本
+# 生产部署
+
+    # TDD以及部署的危险区域
+    # 一如既往，先写测试
+
+vi functional_tests/tests.py
+# LiveServerTestCase 的缺陷之一,总假设使用他自身的测试服务器
+# 当使用过渡服务器时,劫持域名
+python manage.py test functional_tests
+
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
+    # 注册域名
+    # 手动配置托管网站的服务器
+      # 选择在哪里托管网站
+      # 搭建服务器
+      # 用户账户、SSH和权限
+      # 安装Nginx
+      # 解析过渡环境和线上环境所用的域名
+      # 使用功能测试确认域名可用而且Nginx正在运行
+    # 手动部署代码
+      # 调整数据库的位置
+      # 创建虚拟环境
+      # 简单配置Nginx
+      # 使用迁移创建数据库
+    # 为部署到生产环境做好准备
+      # 换用Gunicorn
+      # 让Nginx伺服静态文件
+      # 换用Unix套接字
+      # 把DEBUG设为False，设置ALLOWED_HOSTS
+      # 使用Upstart确保引导时启动Gunicorn
+      # 保存改动：把Gunicorn 添加到requirements    txt
+    # 自动化
 
 
 

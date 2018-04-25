@@ -12,6 +12,7 @@ chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument("user-agent='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'")
 
 import time
+import os
 # import unittest
 # import os
 # import sys
@@ -23,6 +24,9 @@ class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self):  
         self.browser = webdriver.Chrome(chrome_options=chrome_options, executable_path='/home/yann/chromedriver')
         #  self.browser = webdriver.Firefox()
+        staging_server = os.environ.get('STAGING_SERVER')
+        if staging_server:
+            self.live_server_url='http://' +staging_server
 
     def tearDown(self):  
         self.browser.quit()
