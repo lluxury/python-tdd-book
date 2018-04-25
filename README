@@ -875,8 +875,12 @@ vi lists/templates/home.html
 vi lists/templates/list.html
 python manage.py test functional_tests/
 # 恢复到继承之前状态,本节结束
+git diff -b
 
   # 集成Bootstrap
+vi lists/templates/base.html
+# 头部集成,不是很明白,先照着做
+
 # 行和列
 
   # Django中的静态文件
