@@ -847,6 +847,17 @@ vi functional_tests/tests.py
 # 去除模板上的p标记,改用代码处理
 
   # 使用CSS框架美化网站
+# http://getbootstrap.com/  css框架
+wget -O bootstrap.zip https://github.com/twbs/bootstrap/releases/download/v3.3.4/bootstrap-3.3.4-dist.zip
+unzip bootstrap.zip
+mkdir lists/static
+mv bootstrap-3.3.4-dist lists/static/bootstrap
+rm bootstrap.zip
+
+# https://getbootstrap.com/docs/3.3/getting-started/
+# https://coding.smashingmagazine.com/2013/03/customizing-bootstrap/
+# 需要在模板中嵌入相关信息来使用bootstrap
+
   # Django模板继承
   # 集成Bootstrap
 # 行和列
