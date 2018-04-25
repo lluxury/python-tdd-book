@@ -828,7 +828,39 @@ python3 manage.py migrate
 # python3 manage.py migrage
 
      第二部分　Web开发要素
+美化网站布局、样式及测试方法
+  # 如何在功能测试中测试布局和样式
+# 重写一个功能测试
+vi functional_tests/tests.py
+  def test_layout_and_styling(self):
 
+# AssertionError: 106.5 != 512 within 10 delta
+# 设定一个窗口看是否居中,结果不居中
+
+# 想办法调试过去
+vi lists/templates/home.html
+  # <p style="text-align: center;">
+# 证明测试有效
+
+# 继续编写测试仍然失败
+vi functional_tests/tests.py
+# 去除模板上的p标记,改用代码处理
+
+  # 使用CSS框架美化网站
+  # Django模板继承
+  # 集成Bootstrap
+# 行和列
+
+  # Django中的静态文件
+# 换用StaticLiveServerTestCase
+
+  # 使用Bootstrap中的组件改进网站外观
+    # 超大文本块
+    # 大型输入框
+    # 样式化表格
+  # 使用自己编写的CSS
+  # 补遗：collectstatic命令和其他静态目录
+  # 没谈到的话题
 
 
 
