@@ -859,6 +859,23 @@ rm bootstrap.zip
 # 需要在模板中嵌入相关信息来使用bootstrap
 
   # Django模板继承
+# 现在已经两个模板了,不希望每个文件都做大量相同改动
+# 使用模版继承
+diff lists/templates/home.html lists/templates/list.html
+# 头部文本不一样,提交地址不一样,一个模板有表单
+
+cp lists/templates/home.html lists/templates/base.html
+vi !$
+
+# 定义好块, 再修改原来的两个模板
+vi lists/templates/base.html
+vi lists/templates/home.html
+ # {% bloke_x header_text %} 注意拼写错误
+
+vi lists/templates/list.html
+python manage.py test functional_tests/
+# 恢复到继承之前状态,本节结束
+
   # 集成Bootstrap
 # 行和列
 
