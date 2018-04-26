@@ -955,6 +955,7 @@ echo /static >> .gitignore
 
 使用过渡网站测试部署
 # obeythetestinggoat@gmail.com
+# 这一节,书和原文的差异比较大,书上的内容会做为注释标注
 
 # 列表:
 # 修改功能测试
@@ -978,33 +979,335 @@ python manage.py test functional_tests
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 
     # 注册域名
+# pass
+
     # 手动配置托管网站的服务器
+# 配置服务器
+# 部署代码
+
       # 选择在哪里托管网站
+# Heroku, OpenShift, PythonAnywhere
+
       # 搭建服务器
+# Ubuntu
+# root
+# 外网可访问
+# 可以ssh登录
+
       # 用户账户、SSH和权限
+useradd -m -s /bin/bash elspeth
+usermod -a -G sudo elspeth
+passwd elspeth
+su - elspeth
+
+# 安装Python 3.6
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.6 python3.6-venv
+# 安装git
+sudo apt install git
+
+# 设置域
+
+
       # 安装Nginx
+sudo apt-get install nginx
+sudo service nginx start
+
       # 解析过渡环境和线上环境所用的域名
+# https://www.whatsmydns.net/#A/superlists-staging.ottg.eu
+
       # 使用功能测试确认域名可用而且Nginx正在运行
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
     # 手动部署代码
+# 配置使用root权限,部署不需要
+# elspeth@server
+export SITENAME=superlists-staging.ottg.eu
+# git clone https://github.com/hjwp/book-example.git ~/sites/$SITENAME
+
+cd ~/sites/$SITENAME
+python3.6 manage.py runserver
+# 无虚拟环境时测试运行
+
       # 调整数据库的位置
+
       # 创建虚拟环境
+echo "django==1.11" > requirements.txt
+git add requirements.txt
+git commit -m "Add requirements.txt for virtualenv"
+
+git push
+# elspeth@server:$ git pull  # may ask you to do some git config first
+
+pwd
+# /home/elspeth/sites/superlists-staging.ottg.eu
+python3.6 -m venv virtualenv
+ls virtualenv/bin
+source ./virtualenv/bin/activate
+
+./virtualenv/bin/pip install -r requirements.txt
+./virtualenv/bin/python manage.py runserver
+
+STAGING_SERVER=superlists-staging.ottg.eu ./manage.py test functional_tests \
+    --failfast
+
+STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests \
+    --failfast
+curl superlists-staging.ottg.eu
+
+./virtualenv/bin/python manage.py runserver 0.0.0.0:8000
+curl localhost:8000
+curl superlists-staging.ottg.eu:8000
+
+STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests \
+    --failfast
+
+vi superlists/settings.py
+# 配置django开放访问
+# https://docs.djangoproject.com/en/1.11/ref/settings/#std:setting-ALLOWED_HOSTS
+
+git commit -am "hack ALLOWED_HOSTS to be *"
+git push
+
+# 在过渡服务器
+git pull
+./virtualenv/bin/python manage.py runserver 0.0.0.0:8000
+
+STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests \
+    --failfast
+
+
       # 简单配置Nginx
+sudo apt install nginx
+sudo systemctl start nginx
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
+# nginx 配置
+vi server: /etc/nginx/sites-available/superlists-staging.ottg.eu
+  server {
+    listen 80;
+    server_name superlists-staging.ottg.eu;
+
+    location / {
+        proxy_pass http://localhost:8000;
+    }
+  }
+
+export SITENAME=superlists-staging.ottg.eu
+cd /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/$SITENAME $SITENAME
+readlink -f $SITENAME
+# /etc/nginx/sites-available/superlists-staging.ottg.eu
+
+sudo rm /etc/nginx/sites-enabled/default
+
+sudo systemctl reload nginx
+cd ~/sites/$SITENAME
+./virtualenv/bin/python manage.py runserver 8000
+
+STAGING_SERVER=superlists-staging.ottg.eu ./manage.py test functional_tests --failfast
+
+vi /etc/nginx/nginx.conf
+  server_names_hash_bucket_size 64;
+
       # 使用迁移创建数据库
+./virtualenv/bin/python manage.py migrate --noinput
+./virtualenv/bin/python manage.py runserver 0.0.0.0:8000
+STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests
+
     # 为部署到生产环境做好准备
       # 换用Gunicorn
+./virtualenv/bin/pip install gunicorn
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
+
       # 让Nginx伺服静态文件
+./virtualenv/bin/python manage.py collectstatic --noinput
+ls static/
+
+vi /etc/nginx/sites-available/superlists-staging.ottg.eu
+      location /static {
+        alias /home/elspeth/sites/superlists-staging.ottg.eu/static;
+      }
+
+sudo systemctl reload nginx
+./virtualenv/bin/gunicorn superlists.wsgi:application
+
+# local
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
       # 换用Unix套接字
+vi /etc/nginx/sites-available/superlists-staging.ottg.eu
+        location / {
+        proxy_pass http://unix:/tmp/superlists-staging.ottg.eu.socket;
+        }
+
+sudo systemctl reload nginx
+./virtualenv/bin/gunicorn --bind \
+    unix:/tmp/superlists-staging.ottg.eu.socket superlists.wsgi:application
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
+设置环境变量,应对生产环境
+
       # 把DEBUG设为False，设置ALLOWED_HOSTS
-      # 使用Upstart确保引导时启动Gunicorn
-      # 保存改动：把Gunicorn 添加到requirements    txt
+      # SECRET_KEY ?
+# https://docs.djangoproject.com/en/1.11/topics/signing/
+# http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/
+
+vi superlists/settings.py 
+# 配置动态DEBUG
+
+git pull
+export DJANGO_DEBUG_FALSE=y DJANGO_SECRET_KEY=abc123
+elspeth@server:$ ./virtualenv/bin/gunicorn --bind \
+    unix:/tmp/superlists-staging.ottg.eu.socket superlists.wsgi:application
+
+STAGING_SERVER=superlists-staging.ottg.eu ./manage.py test functional_tests --failfast
+# https://www.obeythetestinggoat.com/book/chapter_making_deployment_production_ready.html#django-400-error
+
+# Googling the Error Message
+https://news.ycombinator.com/item?id=11459601
+vi /etc/nginx/sites-available/superlists-staging.ottg.eu
+    proxy_set_header Host $host;
+sudo systemctl reload nginx
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
+# 使用.env文件保存环境变量
+.env >> .gitignore
+echo DJANGO_DEBUG_FALSE=y >> .env
+echo SITENAME=$SITENAME >>.env
+
+# 获取SECRET_KEY
+echo DJANGO_SECRET_KEY=$(
+python3.6 -c"import random; print(''.join(random.SystemRandom().
+choices('abcdefghijklmnopqrstuvwxyz0123456789', k=50)))"
+) >> .env
+cat .env
+
+unset DJANGO_SECRET_KEY DJANGO_DEBUG_FALSE SITENAME
+echo $DJANGO_DEBUG_FALSE-none
+set -a; source .env; set +a
+echo $DJANGO_DEBUG_FALSE-none
+./virtualenv/bin/gunicorn --bind \
+    unix:/tmp/$SITENAME.socket superlists.wsgi:application
+
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
+# https://django-environ.readthedocs.io/en/latest/
+# https://docs.pipenv.org/
+
+    # 使用Upstart确保引导时启动Gunicorn
+vi /etc/systemd/system/gunicorn-superlists-staging.ottg.eu.service
+...
+
+sudo systemctl daemon-reload
+sudo systemctl enable gunicorn-superlists-staging.ottg.eu
+sudo systemctl start gunicorn-superlists-staging.ottg.eu
+
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+
+    # 保存改动：把Gunicorn 添加到requirements    txt
+
+
+pip install gunicorn
+pip freeze | grep gunicorn >> requirements.txt
+git commit -am "Add gunicorn to virtualenv requirements"
+git push
+
     # 自动化
+# 规划
+# Provisioning 准备
+Assume we have a user account and home folder
+
+add-apt-repository ppa:deadsnakes/ppa && apt update
+
+apt install nginx git python3.6 python3.6-venv
+
+Add Nginx config for virtual host
+
+Add Systemd job for Gunicorn (including unique SECRET_KEY)
+
+# Deployment 部署
+Create directory in ~/sites
+
+Pull down source code
+
+Start virtualenv in virtualenv
+
+pip install -r requirements.txt
+
+manage.py migrate for database
+
+collectstatic for static files
+
+Restart Gunicorn job
+
+Run FTs to check everything works
+
+# 保存模板为了未来的配置
+mkdir deploy_tools
+vi deploy_tools/nginx.template.conf
+vi deploy_tools/gunicorn-systemd.template.service
+vi deploy_tools/provisioning_notes.md
 
 
 
+# 使用Fabric自动部署
+pip install fabric3
+fab function_name:host=SERVER_ADDRESS
 
+  # 分析一个Fabric部署脚本
+vi deploy_tools/fabfile.py
 
+vi deploy_tools/fabfile.py
 
+vi deploy_tools/fabfile.py
 
+  # 试用部署脚本
+cd deploy_tools
+fab deploy:host=elspeth@superlists-staging.ottg.eu
+fab --help
+
+    # 部署到线上服务器
+fab deploy:host=elspeth@superlists.ottg.eu
+
+    # 使用sed配置Nginx 和Gunicorn
+cat ./deploy_tools/nginx.template.conf \
+    | sed "s/DOMAIN/superlists.ottg.eu/g" \
+    | sudo tee /etc/nginx/sites-available/superlists.ottg.eu
+
+sudo ln -s /etc/nginx/sites-available/superlists.ottg.eu \
+    /etc/nginx/sites-enabled/superlists.ottg.eu
+
+cat ./deploy_tools/gunicorn-systemd.template.service \
+    | sed "s/DOMAIN/superlists.ottg.eu/g" \
+    | sudo tee /etc/systemd/system/gunicorn-superlists.ottg.eu.service
+
+sudo systemctl daemon-reload
+sudo systemctl reload nginx
+sudo systemctl enable gunicorn-superlists.ottg.eu
+sudo systemctl start gunicorn-superlists.ottg.eu 
+
+  # 使用Git标签标注发布状态
+git tag LIVE
+export TAG=$(date +DEPLOYED-%F/%H%M)  # this generates a timestamp
+echo $TAG # should show "DEPLOYED-" and then the timestamp
+git tag $TAG
+git push origin LIVE $TAG # pushes the tags up
+
+git log --graph --oneline --decorate
+
+  # 延伸阅读
+# http://hynek.me/talks/python-deployments
+# http://bit.ly/U6tUo5
+# http://12factor.net/
+
+# 自动化部署
+
+# 使用Ansible
+# Chef, Puppet, Salt, Juju
+https://www.obeythetestinggoat.com/book/appendix_III_provisioning_with_ansible.html
 
 
 
