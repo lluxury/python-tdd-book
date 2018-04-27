@@ -974,12 +974,17 @@ echo /static >> .gitignore
 vi functional_tests/tests.py
 # LiveServerTestCase 的缺陷之一,总假设使用他自身的测试服务器
 # 当使用过渡服务器时,劫持域名
+# 使用了一个环境变量 STAGING_SERVER
+
 python manage.py test functional_tests
+# 测试通过正常
 
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+# AssertionError: 'To-Do' not found in ''
+# 故障,因为还没部署域名
 
     # 注册域名
-# pass
+# 域名我到是有的,但是有外网ip的服务器没有,用hosts替代一下吧
 
     # 手动配置托管网站的服务器
 # 配置服务器
@@ -993,11 +998,19 @@ STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 # root
 # 外网可访问
 # 可以ssh登录
+# https://www.linode.com/docs/security/authentication/use-public-key-authentication-with-ssh/
+# https://github.com/hjwp/Book-TDD-Web-Dev-Python/blob/master/server-quickstart.md
+
+# 使用test9, 部署hosts
 
       # 用户账户、SSH和权限
+# 新建个用户并赋权
+
+# elspeth@server
+# 注意,和别的章不同,本次是要在两台机器间切换的,有切换我会标注
 useradd -m -s /bin/bash elspeth
 usermod -a -G sudo elspeth
-passwd elspeth
+passwd elspeth    # elspeth
 su - elspeth
 
 # 安装Python 3.6
@@ -1008,7 +1021,7 @@ sudo apt install python3.6 python3.6-venv
 sudo apt install git
 
 # 设置域
-
+# 在本地的hosts上写入superlists-staging.ottg.eu 的ip
 
       # 安装Nginx
 sudo apt-get install nginx
@@ -1018,21 +1031,30 @@ sudo service nginx start
 # https://www.whatsmydns.net/#A/superlists-staging.ottg.eu
 
       # 使用功能测试确认域名可用而且Nginx正在运行
+# local
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+# AssertionError: 'To-Do' not found in 'Welcome to nginx!'
+# 报错同之前比有了变化
 
     # 手动部署代码
 # 配置使用root权限,部署不需要
+
 # elspeth@server
 export SITENAME=superlists-staging.ottg.eu
 # git clone https://github.com/hjwp/book-example.git ~/sites/$SITENAME
+git clone https://github.com/lluxury/python-tdd-book.git ~/sites/$SITENAME
 
 cd ~/sites/$SITENAME
 python3.6 manage.py runserver
+# ImportError: Couldn't import Django.
+# 没有安装django,测试失败
+
 # 无虚拟环境时测试运行
 
       # 调整数据库的位置
 
       # 创建虚拟环境
+# local
 echo "django==1.11" > requirements.txt
 git add requirements.txt
 git commit -m "Add requirements.txt for virtualenv"
@@ -1040,51 +1062,83 @@ git commit -m "Add requirements.txt for virtualenv"
 git push
 # elspeth@server:$ git pull  # may ask you to do some git config first
 
+# elspeth@server
+git pull
 pwd
 # /home/elspeth/sites/superlists-staging.ottg.eu
 python3.6 -m venv virtualenv
 ls virtualenv/bin
-source ./virtualenv/bin/activate
+python -V  #Python 2.7.6
+python3.6 -V   #Python 3.6.5
 
-./virtualenv/bin/pip install -r requirements.txt
+# source ./virtualenv/bin/activate
+
+# ./virtualenv/bin/pip install -r requirements.txt
+# Caused by SSLError(SSLError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:833)'),)
+# 据说Python 升级到 2.7.9 之后引入了一个新特性，当使用urllib.urlopen打开一个 https 链接时，会验证一次 SSL 证书
+
+./virtualenv/bin/pip --trusted-host files.pythonhosted.org install -r requirements.txt
+# 自己修改了一下,可以用了,拉起来服务
 ./virtualenv/bin/python manage.py runserver
 
+# local
 STAGING_SERVER=superlists-staging.ottg.eu ./manage.py test functional_tests \
     --failfast
+# AssertionError: 'To-Do' not found in 'Welcome to nginx!'
 
 STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests \
     --failfast
+# AssertionError: 'To-Do' not found in ''
+
 curl superlists-staging.ottg.eu
+# 无法访问
+
+# elspeth@server
+curl localhost:8000
+# 成功
 
 ./virtualenv/bin/python manage.py runserver 0.0.0.0:8000
 curl localhost:8000
+
+# local
 curl superlists-staging.ottg.eu:8000
 
 STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests \
     --failfast
+# AssertionError: 'To-Do' not found in 'DisallowedHost at /'
 
 vi superlists/settings.py
+  ALLOWED_HOSTS = ['*']
 # 配置django开放访问
 # https://docs.djangoproject.com/en/1.11/ref/settings/#std:setting-ALLOWED_HOSTS
 
 git commit -am "hack ALLOWED_HOSTS to be *"
 git push
+# 之前已经设过,pass
 
-# 在过渡服务器
+      # 使用迁移创建数据库
+# elspeth@server
 git pull
+./virtualenv/bin/python manage.py migrate --noinput
 ./virtualenv/bin/python manage.py runserver 0.0.0.0:8000
 
+# local
 STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests \
     --failfast
 
 
       # 简单配置Nginx
+# elspeth@server
 sudo apt install nginx
-sudo systemctl start nginx
+# sudo systemctl start nginx
+sudo service nginx start
+
+# local
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 
+# elspeth@server
 # nginx 配置
-vi server: /etc/nginx/sites-available/superlists-staging.ottg.eu
+sudo vi /etc/nginx/sites-available/superlists-staging.ottg.eu
   server {
     listen 80;
     server_name superlists-staging.ottg.eu;
@@ -1097,56 +1151,75 @@ vi server: /etc/nginx/sites-available/superlists-staging.ottg.eu
 export SITENAME=superlists-staging.ottg.eu
 cd /etc/nginx/sites-enabled/
 sudo ln -s /etc/nginx/sites-available/$SITENAME $SITENAME
+# 把路径赋给变量
+
 readlink -f $SITENAME
 # /etc/nginx/sites-available/superlists-staging.ottg.eu
 
 sudo rm /etc/nginx/sites-enabled/default
 
-sudo systemctl reload nginx
+# sudo systemctl reload nginx
+sudo service nginx reload
 cd ~/sites/$SITENAME
 ./virtualenv/bin/python manage.py runserver 8000
 
+# local
 STAGING_SERVER=superlists-staging.ottg.eu ./manage.py test functional_tests --failfast
+# ok
 
+# elspeth@server
 vi /etc/nginx/nginx.conf
   server_names_hash_bucket_size 64;
 
-      # 使用迁移创建数据库
-./virtualenv/bin/python manage.py migrate --noinput
-./virtualenv/bin/python manage.py runserver 0.0.0.0:8000
-STAGING_SERVER=superlists-staging.ottg.eu:8000 ./manage.py test functional_tests
+
 
     # 为部署到生产环境做好准备
       # 换用Gunicorn
-./virtualenv/bin/pip install gunicorn
-STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
-
-
-      # 让Nginx伺服静态文件
-./virtualenv/bin/python manage.py collectstatic --noinput
-ls static/
-
-vi /etc/nginx/sites-available/superlists-staging.ottg.eu
-      location /static {
-        alias /home/elspeth/sites/superlists-staging.ottg.eu/static;
-      }
-
-sudo systemctl reload nginx
+# ./virtualenv/bin/pip install gunicorn
+./virtualenv/bin/pip --trusted-host files.pythonhosted.org install gunicorn
 ./virtualenv/bin/gunicorn superlists.wsgi:application
 
 # local
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+# AssertionError: 94.5 != 512 within 10 delta
+# 测试,发现css丢失
+
+      # 让Nginx伺服静态文件
+# elspeth@server
+./virtualenv/bin/python manage.py collectstatic --noinput
+ls static/
+
+sudo vim /etc/nginx/sites-available/superlists-staging.ottg.eu
+      location /static {
+        alias /home/elspeth/sites/superlists-staging.ottg.eu/static;
+      }
+
+# sudo systemctl reload nginx
+sudo service nginx reload
+./virtualenv/bin/gunicorn superlists.wsgi:application
+
+# local
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+# 测试通过
 
       # 换用Unix套接字
+# elspeth@server
 vi /etc/nginx/sites-available/superlists-staging.ottg.eu
         location / {
         proxy_pass http://unix:/tmp/superlists-staging.ottg.eu.socket;
         }
+# 修改nginx的配置文件
 
-sudo systemctl reload nginx
+# sudo systemctl reload nginx
+sudo service nginx reload
 ./virtualenv/bin/gunicorn --bind \
     unix:/tmp/superlists-staging.ottg.eu.socket superlists.wsgi:application
+# 用来处理Nginx和gunicorn之间的通信
+# 使用socket的nginx配置方法注意记录
+
+# local
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+# 测试通过
 
 设置环境变量,应对生产环境
 
@@ -1155,28 +1228,48 @@ STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 # https://docs.djangoproject.com/en/1.11/topics/signing/
 # http://www.clearlytech.com/2014/01/04/12-factor-apps-plain-english/
 
+# local
 vi superlists/settings.py 
-# 配置动态DEBUG
+# 配置动态DEBUG,居然可以在setting里写if语句,第一次知道
 
+# elspeth@server
 git pull
 export DJANGO_DEBUG_FALSE=y DJANGO_SECRET_KEY=abc123
-elspeth@server:$ ./virtualenv/bin/gunicorn --bind \
+# 把settings里的变量写入系统?
+
+./virtualenv/bin/gunicorn --bind \
     unix:/tmp/superlists-staging.ottg.eu.socket superlists.wsgi:application
 
+# local
 STAGING_SERVER=superlists-staging.ottg.eu ./manage.py test functional_tests --failfast
 # https://www.obeythetestinggoat.com/book/chapter_making_deployment_production_ready.html#django-400-error
+# 意外遇到故障 AssertionError: 'To-Do' not found in '',打开页面一看,400
+# Bad Request (400)
 
 # Googling the Error Message
-https://news.ycombinator.com/item?id=11459601
-vi /etc/nginx/sites-available/superlists-staging.ottg.eu
+# https://news.ycombinator.com/item?id=11459601
+# https://www.obeythetestinggoat.com/book/chapter_manual_deployment.html#django-disallowedhosts-error
+# https://www.digitalocean.com/community/questions/bad-request-400-django-nginx-gunicorn-on-debian-7
+
+# elspeth@server
+sudo vim /etc/nginx/sites-available/superlists-staging.ottg.eu
     proxy_set_header Host $host;
-sudo systemctl reload nginx
+# nginx脚本在Host Header请求之外,看起来像是本地运行的?
+# 过nginx后,后端服务获取的应用ip和端口都是不对的,需要设代理传递
+
+# sudo systemctl reload nginx
+sudo service nginx reload
+
+# local
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 
 # 使用.env文件保存环境变量
-.env >> .gitignore
+echo .env >> .gitignore
+
+# elspeth@server
 echo DJANGO_DEBUG_FALSE=y >> .env
 echo SITENAME=$SITENAME >>.env
+# 注意SITENAME 有没有值
 
 # 获取SECRET_KEY
 echo DJANGO_SECRET_KEY=$(
@@ -1189,80 +1282,96 @@ unset DJANGO_SECRET_KEY DJANGO_DEBUG_FALSE SITENAME
 echo $DJANGO_DEBUG_FALSE-none
 set -a; source .env; set +a
 echo $DJANGO_DEBUG_FALSE-none
+# unset命令用于删除已定义的shell变量（包括环境变量）和shell函数,这是一个测试.env是否有效
+# 这个一个很好的方法,测试预置变量
+
 ./virtualenv/bin/gunicorn --bind \
     unix:/tmp/$SITENAME.socket superlists.wsgi:application
 
-STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 
+# local
+STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
+# 再次测试确认可用
 # https://django-environ.readthedocs.io/en/latest/
 # https://docs.pipenv.org/
 
     # 使用Upstart确保引导时启动Gunicorn
-vi /etc/systemd/system/gunicorn-superlists-staging.ottg.eu.service
-...
+# Ubuntu设置
+# vi /etc/init/gunicorn-superlist-staging.ottg.eu.conf
+  # virtualenv/bin/gunicorn --bind unix:/tmp/$SITENAME.socket superlists.wsgi:application x
+# 修改后成功,写死比变量好用,除非必要,我觉得是.env没配上去的原因
 
+# sudo start gunicorn-superlists-staging.ottg.eu
+# http://docs.gunicorn.org/en/stable/deploy.html
+
+vi /etc/systemd/system/gunicorn-superlists-staging.ottg.eu.service
 sudo systemctl daemon-reload
 sudo systemctl enable gunicorn-superlists-staging.ottg.eu
 sudo systemctl start gunicorn-superlists-staging.ottg.eu
+# 没有环境,先放着吧
 
 STAGING_SERVER=superlists-staging.ottg.eu python manage.py test functional_tests
 
+# local
     # 保存改动：把Gunicorn 添加到requirements    txt
-
-
 pip install gunicorn
 pip freeze | grep gunicorn >> requirements.txt
 git commit -am "Add gunicorn to virtualenv requirements"
 git push
 
+
     # 自动化
 # 规划
-# Provisioning 准备
-Assume we have a user account and home folder
-
+# Provisioning 配置
+# 建用户,建home目录
 add-apt-repository ppa:deadsnakes/ppa && apt update
-
 apt install nginx git python3.6 python3.6-venv
-
-Add Nginx config for virtual host
-
-Add Systemd job for Gunicorn (including unique SECRET_KEY)
+# 增加nginx配置
+# 建立Systemd job for Gunicorn (including unique SECRET_KEY)
 
 # Deployment 部署
-Create directory in ~/sites
-
-Pull down source code
-
-Start virtualenv in virtualenv
-
+# 在 ~/sites 建立目录结构
+# 拉源码保存在site目录下
+# 启动virtualenv
 pip install -r requirements.txt
-
 manage.py migrate for database
-
-collectstatic for static files
-
-Restart Gunicorn job
-
-Run FTs to check everything works
+# 使用collectstatic汇总静态文件
+# 重启Gunicorn job
+# 运行功能测试确认完成
 
 # 保存模板为了未来的配置
+# local
 mkdir deploy_tools
 vi deploy_tools/nginx.template.conf
 vi deploy_tools/gunicorn-systemd.template.service
 vi deploy_tools/provisioning_notes.md
 
-
+vi deploy_tools/fabfile.py
+# 获取内容,进入目录,执行以下命令?
 
 # 使用Fabric自动部署
+# elspeth@server
 pip install fabric3
-fab function_name:host=SERVER_ADDRESS
+# fab function_name:host=SERVER_ADDRESS
 
   # 分析一个Fabric部署脚本
 vi deploy_tools/fabfile.py
+# deploy()
 
 vi deploy_tools/fabfile.py
+# _get_latest_source()
 
 vi deploy_tools/fabfile.py
+# _update_virtualenv()
+
+vi deploy_tools/fabfile.py
+# _create_or_update_dotenv()
+
+vi deploy_tools/fabfile.py
+# _update_static_files()
+
+vi deploy_tools/fabfile.py
+# _update_database()
 
   # 试用部署脚本
 cd deploy_tools
