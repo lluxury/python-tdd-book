@@ -1351,9 +1351,9 @@ vi deploy_tools/fabfile.py
 
 # 使用Fabric自动部署
 # elspeth@server
-sudo apt-get install python-pip
 # pip install fabric3
 ./virtualenv/bin/pip --trusted-host files.pythonhosted.org install fabric3
+
 # fab function_name:host=SERVER_ADDRESS
 
   # 分析一个Fabric部署脚本
@@ -1362,6 +1362,7 @@ vi deploy_tools/fabfile.py
 
 vi deploy_tools/fabfile.py
 # _get_latest_source()
+
 
 vi deploy_tools/fabfile.py
 # _update_virtualenv()
@@ -1378,12 +1379,9 @@ vi deploy_tools/fabfile.py
   # 试用部署脚本
 # elspeth@server
 cd deploy_tools
-fab deploy:host=elspeth@superlists-staging.ottg.eu
-fab --help
-
-    # 部署到线上服务器
-fab deploy:host=elspeth@superlists.ottg.eu
 ../virtualenv/bin/fab deploy:host=elspeth@superlists-staging.ottg.eu
+
+
 # 部署失败,一直需要密码,貌似是ssh的问题
 # 犯了个很严重的错误,没有写本地host,做用到了远方的同名机器
 
@@ -1391,6 +1389,9 @@ fab deploy:host=elspeth@superlists.ottg.eu
 # current_commit = local("git log -n 1 --format=%H", capture=True)
 # 自动补全虽然很好用,但也很容易错
 
+    # 部署到线上服务器
+# 第一次应该还是手动的,后面用这个
+../virtualenv/bin/fab deploy:host=elspeth@superlists.ottg.eu
     # 使用sed配置Nginx 和Gunicorn
 cat ./deploy_tools/nginx.template.conf \
     | sed "s/DOMAIN/superlists.ottg.eu/g" \
@@ -1407,15 +1408,19 @@ sudo systemctl daemon-reload
 sudo systemctl reload nginx
 sudo systemctl enable gunicorn-superlists.ottg.eu
 sudo systemctl start gunicorn-superlists.ottg.eu 
+# 以上没测试需要分ubuntu和centos版本,有需要时候再处理吧
 
   # 使用Git标签标注发布状态
+# local
 git tag LIVE
 export TAG=$(date +DEPLOYED-%F/%H%M)  # this generates a timestamp
 echo $TAG # should show "DEPLOYED-" and then the timestamp
 git tag $TAG
+# * e973434 - (HEAD, tag: LIVE, tag: DEPLOYED-2018-04-28/1956, origin/master, master) 
 git push origin LIVE $TAG # pushes the tags up
 
 git log --graph --oneline --decorate
+# 一个比较靠谱的tag方式,环境加日期
 
   # 延伸阅读
 # http://hynek.me/talks/python-deployments
@@ -1426,8 +1431,29 @@ git log --graph --oneline --decorate
 
 # 使用Ansible
 # Chef, Puppet, Salt, Juju
-https://www.obeythetestinggoat.com/book/appendix_III_provisioning_with_ansible.html
+# https://www.obeythetestinggoat.com/book/appendix_III_provisioning_with_ansible.html
 
+
+输入验证和测试的组织方式
+  # 针对验证的功能测试：避免提交空待办事项
+# vi functional_tests/tests.py
+  test_cannot_add_empty_list_items()
+  
+    # 跳过测试
+    # 把功能测试分拆到多个文件中
+    # 运行单个测试文件
+    # 填充功能测试
+  # 使用模型层验证
+    # 重构单元测试，分拆成多个文件
+    # 模型验证的单元测试和self    assertRaises上下文管理器
+    # Django怪异的表现：保存时不验证数据
+  # 在视图中显示模型验证错误
+  # Django模式：在渲染表单的视图中处理POST 请求
+    # 重构：把new_item实现的功能移到view_list 中
+    # 在view_list 视图中执行模型验证
+  # 重构：去除硬编码的URL
+    # 模板标签{% url %}
+    # 重定向时使用get_absolute_url
 
 
 
