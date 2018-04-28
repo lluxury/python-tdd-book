@@ -19,8 +19,12 @@ def _get_latest_source():
         run('git fetch')
     else:
         run(f'git clone {REPO_URL} .')
+<<<<<<< HEAD
     current_commit = local("git log -n 1 --format=%H", capture=True)
     # current_commit = local("git log -n 1 --format=%H", capturn=True)
+=======
+    current_commit = local("git log -n 1 --format=%H", capturn=True)
+>>>>>>> 4f8dc8490dfccfc7115fe777e49652d052c60c93
     run(f'git reset --hard {current_commit}')
 
 def _update_virtualenv():
