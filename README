@@ -1443,6 +1443,7 @@ git log --graph --oneline --decorate
 # 临时跳过测试项的方法,用完记得删除,在需要的func()上方加$
 from unittest import skip$
     @skip$
+# 在生产时,可能好几天才用完,所以你需要一本笔记
 
     # 把功能测试分拆到多个文件中
     # 运行单个测试文件
