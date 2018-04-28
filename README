@@ -1446,6 +1446,16 @@ from unittest import skip$
 # 在生产时,可能好几天才用完,所以你需要一本笔记
 
     # 把功能测试分拆到多个文件中
+functional_tests/tests.py
+python manage.py test functional_tests/
+# 拆分为几个class
+
+git mv functional_tests/tests.py functional_tests/base.py
+cp functional_tests/base.py functional_tests/test_simple_list_creation.py
+cp functional_tests/base.py functional_tests/test_layout_and_styling.py
+
+# 测试成功后,拆分成几个文件
+
     # 运行单个测试文件
     # 填充功能测试
   # 使用模型层验证
