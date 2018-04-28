@@ -1437,9 +1437,13 @@ git log --graph --oneline --decorate
 输入验证和测试的组织方式
   # 针对验证的功能测试：避免提交空待办事项
 # vi functional_tests/tests.py
-  test_cannot_add_empty_list_items()
+    test_cannot_add_empty_list_items()
   
     # 跳过测试
+# 临时跳过测试项的方法,用完记得删除,在需要的func()上方加$
+from unittest import skip$
+    @skip$
+
     # 把功能测试分拆到多个文件中
     # 运行单个测试文件
     # 填充功能测试

@@ -19,8 +19,7 @@ from unittest import skip
 # import sys
 # os.environ['MOZ_HEADLESS'] = '1'  # <- this line
 
-class NewVisitorTest(StaticLiveServerTestCase):
-# class NewVisitorTest(LiveServerTestCase):
+class FunctionalTest(StaticLiveServerTestCase):
 
     def setUp(self):  
         self.browser = webdriver.Chrome(chrome_options=chrome_options, executable_path='/home/yann/chromedriver')
@@ -51,6 +50,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         rows  = table.find_elements_by_tag_name('tr')
         self.assertIn(row_text, [row.text for row in rows])
 
+class NewVisitorTest(FunctionalTest):
     def test_can_start_a_list_for_one_user(self): 
         # check out it's homepage
         self.browser.get(self.live_server_url)
@@ -131,6 +131,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
         # Satisfied, they both go back to sleep
 
+class LayoutAndStylingTest(FunctionalTest):
     def test_layout_and_styling(self):
         # def layout_and_styling(self):
         # edith goes to the home page
@@ -157,6 +158,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
             delta=10
         )
 
+class ItemValidationTest(FunctionalTest):
     @skip
     def test_cannot_add_empty_list_items(self):
         # Edith goes to the hoem page and accidentally tries to submit
