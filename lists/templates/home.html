@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
-{% block header_text %}Start a new To-Do list{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        <div class="alert alert-danger has-error" role="alert">
+            You can't have an empty list item
+        </div>
+    {% endif %}
 
-{% block form_action %}/lists/new{% endblock %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.item_text }}
+    </form>
+{% endblock %}

@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
 
-{% block header_text %}Your To-Do list{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        <div class="alert alert-danger has-error" role="alert">
+            You can't have an empty list item
+        </div>
+    {% endif %}
 
-{% block form_action %}/lists/{{list.id}}/add_item{% endblock %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.item_text }}
+    </form>
 
-{% block table %}
-   <table id="id_list_table" class="table">
-      {% for item in list.item_set.all %}
-        <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
-       {% endfor %}
-     </table>
+    <table id="id_list_table" class="table table-striped table-hover mt-4">
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ forloop.counter }}: {{ item.text }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

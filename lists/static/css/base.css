@@ -1,0 +1,14 @@
+#id_new_item {
+    margin: 0 auto;
+    display: block;
+    max-width: 600px;
+}
+
+form {
+    margin-top: 2rem;
+}
+
+#id_list_table {
+    margin: 0 auto;
+    max-width: 600px;
+}
