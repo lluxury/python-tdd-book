@@ -52,3 +52,23 @@ class ItemValidationTest(FunctionalTest):
         time.sleep(1)
         self.check_for_row_in_list_table("1: Buy milk")
         self.check_for_row_in_list_table("2: Make tea")
+
+    def test_cannot_add_duplicate_items(self):
+        """测试不能添加重复的待办事项"""
+        # Edith访问首页并添加一个待办事项
+        self.browser.get(self.live_server_url)
+        inputbox = self.get_item_input_box()
+        inputbox.send_keys("Buy wellies")
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+        self.check_for_row_in_list_table("1: Buy wellies")
+
+        # 她不小心输入了相同的待办事项
+        inputbox = self.get_item_input_box()
+        inputbox.send_keys("Buy wellies")
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+
+        # 她看到一个有用的错误消息
+        error = self.browser.find_element(By.CSS_SELECTOR, ".has-error")
+        self.assertEqual(error.text, "You've already got this in your list")

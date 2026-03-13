@@ -21,3 +21,7 @@ class FunctionalTest(LiveServerTestCase):
         table = self.browser.find_element(By.ID, "id_list_table")
         rows = table.find_elements(By.TAG_NAME, "tr")
         self.assertTrue(any(row.text == row_text for row in rows))
+
+    def get_item_input_box(self):
+        """辅助方法：获取待办事项输入框"""
+        return self.browser.find_element(By.ID, "id_new_item")

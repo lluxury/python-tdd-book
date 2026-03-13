@@ -3,7 +3,11 @@
 {% block content %}
     {% if form.errors %}
         <div class="alert alert-danger has-error" role="alert">
-            You can't have an empty list item
+            {% if form.non_field_errors %}
+                {{ form.non_field_errors }}
+            {% elif form.item_text.errors %}
+                {{ form.item_text.errors }}
+            {% endif %}
         </div>
     {% endif %}
 

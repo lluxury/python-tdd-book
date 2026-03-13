@@ -14,7 +14,7 @@ class LayoutTest(FunctionalTest):
         self.browser.set_window_size(1024, 768)
 
         # 用户看到输入框完美居中
-        inputbox = self.browser.find_element(By.ID, "id_new_item")
+        inputbox = self.get_item_input_box()
         self.assertAlmostEqual(
             inputbox.location["x"] + inputbox.size["width"] / 2,
             512,
@@ -27,7 +27,7 @@ class LayoutTest(FunctionalTest):
         time.sleep(1)
 
         # 输入框仍然完美居中
-        inputbox = self.browser.find_element(By.ID, "id_new_item")
+        inputbox = self.get_item_input_box()
         self.assertAlmostEqual(
             inputbox.location["x"] + inputbox.size["width"] / 2,
             512,
