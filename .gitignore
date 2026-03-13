@@ -4,4 +4,3 @@ db.sqlite3
 .DS_Store
 staticfiles/
 *.bak
-

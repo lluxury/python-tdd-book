@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit Test Suite</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.1.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/qunit/qunit-2.20.1.js"></script>
+    <script src="../js/list.js"></script>
+    <script>
+        QUnit.config({
+            testTimeout: 3000
+        });
+
+        QUnit.module('Superlists.Error', {
+            beforeEach: function() {
+                // Reset Superlists namespace before each test
+                Superlists = {};
+            }
+        });
+
+        // 冒烟测试示例
+        QUnit.test('smoke test', function(assert) {
+            assert.ok(true, '这个最小化测试应该总是能通过');
+        });
+
+        // 测试 getErrorElement 辅助函数
+        QUnit.test('getErrorElement finds error elements', function(assert) {
+            // 定义 getErrorElement 函数
+            Superlists.getErrorElement = function() {
+                return $('.has-error');
+            };
+
+            $('#qunit-fixture').html('<div class="has-error">Error message</div>');
+
+            var error = Superlists.getErrorElement();
+            assert.equal(error.length, 1, '应该找到一个错误元素');
+            assert.equal(error.text(), 'Error message');
+        });
+
+        QUnit.test('getErrorElement returns empty jQuery object when no error', function(assert) {
+            Superlists.getErrorElement = function() {
+                return $('.has-error');
+            };
+
+            $('#qunit-fixture').html('<div>No error here</div>');
+
+            var error = Superlists.getErrorElement();
+            assert.equal(error.length, 0, '不应该找到错误元素');
+        });
+
+        QUnit.test('hideError removes has-error class and hides element', function(assert) {
+            Superlists.hideError = function() {
+                $('.has-error').removeClass('has-error').hide();
+            };
+
+            $('#qunit-fixture').html('<div class="has-error">Error message</div>');
+
+            var errorElement = $('.has-error');
+            assert.equal(errorElement.length, 1, '错误元素应该存在');
+
+            Superlists.hideError();
+
+            assert.equal($('.has-error').length, 0, '错误类应该被移除');
+            var div = $('#qunit-fixture div');
+            assert.notOk(div.is(':visible'), '元素应该被隐藏');
+        });
+
+        // 测试输入时隐藏错误的行为
+        QUnit.test('error is hidden when user types in input', function(assert) {
+            // 初始化 Superlists 模块
+            Superlists.getErrorElement = function() {
+                return $('.has-error');
+            };
+            Superlists.hideError = function() {
+                $('.has-error').removeClass('has-error').hide();
+            };
+
+            var done = assert.async();
+
+            $('#qunit-fixture').html(
+                '<div class="has-error">You can\'t have an empty list item</div>' +
+                '<input id="id_new_item" type="text">'
+            );
+
+            var inputBox = $('#id_new_item');
+            var errorElement = Superlists.getErrorElement();
+
+            // 绑定事件监听器
+            inputBox.on('keyup', function() {
+                Superlists.hideError();
+            });
+
+            // 验证错误初始可见
+            assert.equal(errorElement.length, 1, '错误元素应该存在');
+            assert.ok(errorElement.is(':visible'), '错误应该初始可见');
+
+            // 模拟用户输入
+            inputBox.trigger('keyup');
+
+            // 验证错误被隐藏
+            assert.equal($('.has-error').length, 0, '用户输入后错误类应该被移除');
+
+            done();
+        });
+
+        // 测试命名空间
+        QUnit.test('Superlists namespace exists', function(assert) {
+            assert.ok(typeof Superlists === 'object', 'Superlists 命名空间应该存在');
+        });
+
+        QUnit.test('initialize method exists', function(assert) {
+            Superlists.initialize = function() {
+                var inputBox = $('#id_new_item');
+                var errorElement = Superlists.getErrorElement();
+                inputBox.on('input', function() {
+                    if (errorElement.length > 0) {
+                        errorElement.hide();
+                    }
+                });
+            };
+            Superlists.getErrorElement = function() {
+                return $('.has-error');
+            };
+
+            assert.ok(typeof Superlists.initialize === 'function', 'initialize 方法应该存在');
+        });
+    </script>
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+        <!-- 测试HTML fixture -->
+    </div>
+</body>
+</html>

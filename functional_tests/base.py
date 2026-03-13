@@ -25,3 +25,7 @@ class FunctionalTest(LiveServerTestCase):
     def get_item_input_box(self):
         """辅助方法：获取待办事项输入框"""
         return self.browser.find_element(By.ID, "id_new_item")
+
+    def get_error_element(self):
+        """辅助方法：获取错误消息元素"""
+        return self.browser.find_element(By.CSS_SELECTOR, ".has-error")

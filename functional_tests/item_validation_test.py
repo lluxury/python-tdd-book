@@ -72,3 +72,29 @@ class ItemValidationTest(FunctionalTest):
         # 她看到一个有用的错误消息
         error = self.browser.find_element(By.CSS_SELECTOR, ".has-error")
         self.assertEqual(error.text, "You've already got this in your list")
+
+    def test_error_messages_are_cleared_on_input(self):
+        """测试错误消息在输入内容时消失"""
+        # Edith访问首页
+        self.browser.get(self.live_server_url)
+
+        # 禁用HTML5验证
+        self.browser.execute_script("document.getElementById('id_new_item').removeAttribute('required')")
+
+        # 输入空内容并提交
+        inputbox = self.get_item_input_box()
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+
+        # 应该看到错误消息
+        error = self.get_error_element()
+        self.assertEqual(error.text, "You can't have an empty list item")
+
+        # 她输入内容后，错误消息应该消失
+        inputbox = self.get_item_input_box()
+        inputbox.send_keys("Go shopping")
+        time.sleep(1)
+
+        # 错误消息应该不再显示
+        errors = self.browser.find_elements(By.CSS_SELECTOR, ".has-error")
+        self.assertEqual(len(errors), 0)
