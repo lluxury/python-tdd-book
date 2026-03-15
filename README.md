@@ -116,6 +116,49 @@ Django ORM和第一个模型
 8. 添加onload样板代码和命名空间　
     js的测试确实不太好做，或者说不熟悉
 
+ 15
+ 建一个测试分支
+
+1. 探究代码， 在lists/templates/base.html 中加入Supabase Auth代码，并把navigator.id 的 request方法绑到登录链接上
+2. 启动django的账户系统应用，处理 post请求 accounts/views.py 及认证代码，自定义用户模型，模型管理器，退出视图，URL 映射
+3. 新建功能测试，访问，登录，出现登录框，使用邮箱地址登录，mockmyid.com，点击后，窗口关闭，登录成功，用到2个辅助函数，循环切到新窗口，显式等待，并测试
+4. 测试成功后，回到主分支，删除探究代码 accounts，用测试驱动开发
+5. 在superlists/superlists 中建全站共用静态文件目录，调用现有单元测试，
+6. 建accounts应用，及js的test目录，除取客户端 JavaScript中的探究代码，换Supabase 代码，
+7. 使用模拟技术，给lists/templates/base.html 中把navigator传入初始化函数
+8. 在initialize函数的单元测试中使用mock，确保requestWasCalled 初始值是 false
+9. 使用sinon.js 创建mock，辅助函数看当前用户
+10. 建立测试，initialize calls navigator.id.watch 之前加入module函数
+11. 重写前面的2个测试，测试onlogin回掉函数
+12. 建立测试 onlogin post failure should do navigator.id.logout
+     完成第12个任务后，如果 test functional_tests.test_login 失败，暂不处理
+     Persona 服务已经下线了，但测试中没有测出来，需要关注
+
+16
+
+1. 在Python代码中使用模拟技术,删除默认 accounts/tests/ 目录，新建一个，新建 LoginViewTest 测试，通过模拟authenticate函数测试视图
+2. 加一个测试，找到用户就返回ok
+3. 加测试，如果认证反回用户，获取登录session
+4. 加测试，如果认证返回None，客户端不在登录状态
+5. 模拟网络请求，测试带着域名发送assertion 到 mozilla，检查响应，提取邮件地址，如果通过不了，模拟一个数据，继续下一项测试
+6. 测试，上一个测试访问响应失败或有错误则返回None，用和上一个相同的请求
+7. 测试响应json中的状态是否为okay
+8. 检测是否能通过email寻找到现有用户，也许需要setUp辅助函数，在测试前保证有一个用户
+9. 测试传入数据persona确认有效（模拟），但数据库没有用户，创建新用户
+10. 测试通过email查找用户和找不到用户返回none
+11. 测试模型，不保存用户姓和名只需要邮件地址
+12. 测试用户有 已经通完认证 的属性，完成后进行功能测试
+13. 多个测试来测试用户退出，用户在登录状态，用户点退出按钮，用户退出，刷新后还在退出状态
+     一个回滚指令把15和16章都删除了，要慎重，或者新开一个分支操作
+
+```bash
+uv run manage.py shell
+from django.contrib.sessions.models import Session
+session = Session.objects.get(session_key="w9wpdnbwouwxtpznyjmfyv9xdg0l1u48")
+print(session.get_decoded())
+{'_auth_user_id': '1', '_auth_user_backend': 'accounts.views.EmailBackend', '_auth_user_hash': '58856ebbb2e795f3f8759e7b6e69af2ec4bbd9584fbb129b48416102b9c35e6e'}
+```
+
 前言　　xv
  准备工作和应具备的知识　　xxi
  致谢　　xxvii
@@ -292,9 +335,7 @@ Django ORM和第一个模型
 
 13.1　从功能测试开始　　213
  13.2　安装一个基本的JavaScript 测试运行程序　　214
- 13.3　使用jQuery 和
-
-固件元素　　217
+ 13.3　使用jQuery 和<div>固件元素　　217
  13.4　为想要实现的功能编写JavaScript单元测试　　219
  13.5　JavaScript测试在TDD循环中的位置　　221
  13.6　经验做法：onload样板代码和命名空间　　222
@@ -304,9 +345,11 @@ Django ORM和第一个模型
  14.2　部署到线上服务器　　225
  14.3　如果看到数据库错误该怎么办　　225
  14.4　总结：为这次新发布打上Git 标签　　225
- 第三部分　高级话题
- 第15章　用户认证、集成第三方插件以及JavaScript模拟技术的使用　　228
- 15.1　Mozilla Persona（BrowserID）　　229
+ 第三部分　高级话题  
+
+### 15　用户认证、集成第三方插件以及JavaScript模拟技术的使用
+
+15.1　Mozilla Persona（BrowserID）　　229
  15.2　探索性编程（又名“探究”）　　229
  为此次探究新建一个分支　　230
  前端和JavaScript代码　　230
@@ -323,9 +366,11 @@ Django ORM和第一个模型
  高级模拟技术　　250
  检查参数的调用　　253
  QUnit 中的setup和teardown函数，以及Ajax请求测试　　255
- 深层嵌套回调函数和测试异步代码　　259
- 第16章　服务器端认证，在Python中使用模拟技术　　262
- 16.1　探究登录视图　　262
+ 深层嵌套回调函数和测试异步代码　　259  
+
+### 16　服务器端认证，在Python中使用模拟技术　　262
+
+16.1　探究登录视图　　262
  16.2　在Python代码中使用模拟技术　　263
  通过模拟authenticate函数测试视图　　263
  确认视图确实登录了用户　　266
@@ -439,8 +484,6 @@ Django ORM和第一个模型
  附录G　参考书目　　415
  作者简介　　416
  封面介绍　　416  
-
-
 
 解释一下前序的工作，使用表单，或ModelForm，和最初的做法有什么区别，这样做有什么好处  
 

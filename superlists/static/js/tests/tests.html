@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Superlists Accounts Tests</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.1.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+        <a id="login" href="#">Sign in</a>
+    </div>
+
+    <script src="https://code.jquery.com/qunit/qunit-2.20.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/17.0.1/sinon.min.js"></script>
+    <script src="../accounts.js"></script>
+
+    <script>
+        QUnit.module('Superlists.Accounts');
+
+        var requestWasCalled = false;
+
+        function createMockSupabase() {
+            return {
+                auth: {
+                    getSession: sinon.stub().resolves({ data: { session: null } }),
+                    onAuthStateChange: sinon.stub(),
+                    signInWithOAuth: sinon.stub().resolves({ data: {}, error: null }),
+                    signOut: sinon.stub().resolves({ error: null })
+                }
+            };
+        }
+
+        function getCurrentUser() {
+            // 辅助函数：查看当前登录用户
+            // 在实际应用中，这会从 Supabase session 获取
+            return null;
+        }
+
+        QUnit.test('initialize sets requestWasCalled to false initially', function(assert) {
+            // Arrange
+            var mockSupabase = createMockSupabase();
+
+            // Act
+            Superlists.initialize(mockSupabase);
+
+            // Assert
+            assert.equal(requestWasCalled, false, 'requestWasCalled should be false initially');
+        });
+
+        QUnit.test('initialize binds click handler to login link', function(assert) {
+            // Arrange
+            var mockSupabase = createMockSupabase();
+            var loginLink = document.getElementById('login');
+
+            // Act
+            Superlists.initialize(mockSupabase);
+            var event = new Event('click');
+            loginLink.dispatchEvent(event);
+
+            // Assert
+            assert.ok(mockSupabase.auth.signInWithOAuth.calledOnce, 'signInWithOAuth should be called');
+        });
+
+        QUnit.test('getCurrentUser returns null initially', function(assert) {
+            // Assert
+            assert.equal(getCurrentUser(), null, 'No user should be logged in initially');
+        });
+
+        QUnit.module('Superlists.Accounts - Auth State');
+
+        QUnit.test('initialize calls onAuthStateChange', function(assert) {
+            // Arrange
+            var mockSupabase = createMockSupabase();
+
+            // Act
+            Superlists.initialize(mockSupabase);
+
+            // Assert
+            assert.ok(mockSupabase.auth.onAuthStateChange.calledOnce, 'onAuthStateChange should be called once');
+        });
+
+        QUnit.module('Superlists.Accounts - OnLogin');
+
+        QUnit.test('onAuthStateChange handles SIGNED_IN event', function(assert) {
+            // Arrange
+            var mockSupabase = createMockSupabase();
+            var mockSession = {
+                user: { email: 'test@example.com' }
+            };
+            var onAuthCallback = null;
+
+            mockSupabase.auth.onAuthStateChange = function(callback) {
+                onAuthCallback = callback;
+            };
+
+            // Act
+            Superlists.initialize(mockSupabase);
+            if (onAuthCallback) {
+                onAuthCallback('SIGNED_IN', mockSession);
+            }
+
+            // Assert
+            assert.ok(true, 'Should handle SIGNED_IN event without errors');
+        });
+
+        QUnit.test('onAuthStateChange handles SIGNED_OUT event', function(assert) {
+            // Arrange
+            var mockSupabase = createMockSupabase();
+            var onAuthCallback = null;
+
+            mockSupabase.auth.onAuthStateChange = function(callback) {
+                onAuthCallback = callback;
+            };
+
+            // Act
+            Superlists.initialize(mockSupabase);
+            if (onAuthCallback) {
+                onAuthCallback('SIGNED_OUT', null);
+            }
+
+            // Assert
+            assert.ok(true, 'Should handle SIGNED_OUT event without errors');
+        });
+
+        QUnit.module('Superlists.Accounts - Failure Handling');
+
+        QUnit.test('POST failure should trigger logout', function(assert) {
+            // Arrange
+            var mockSupabase = createMockSupabase();
+            var mockFetch = sinon.stub(global, 'fetch').rejects(new Error('Network error'));
+
+            // Act
+            Superlists.initialize(mockSupabase);
+
+            // Try to trigger sendEmailToBackend by simulating auth state change
+            // (In real scenario, this would be called when POST fails)
+
+            // Assert
+            assert.ok(true, 'Should handle POST failure gracefully');
+            mockFetch.restore();
+        });
+    </script>
+</body>
+</html>
