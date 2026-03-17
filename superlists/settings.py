@@ -78,6 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'TEST': {
+            'NAME': BASE_DIR / 'test_db.sqlite3',
+        }
     }
 }
 
@@ -135,3 +138,83 @@ AUTH_USER_MODEL = 'accounts.ListUser'
 AUTHENTICATION_BACKENDS = (
     'accounts.views.EmailBackend',
 )
+
+# Logging configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'logs' / 'django.log',
+            'formatter': 'verbose',
+        },
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'accounts': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
+
+# Create logs directory if it doesn't exist
+import os
+import sys
+logs_dir = BASE_DIR / 'logs'
+if not logs_dir.exists():
+    os.makedirs(logs_dir, exist_ok=True)
+
+# Test configuration
+# 测试配置
+
+# Test runner
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+# Functional test settings
+# 功能测试设置
+FUNCTIONAL_TESTS = {
+    'DEFAULT_TIMEOUT': 10,
+    'SELENIUM_DRIVER': 'firefox',
+    'HEADLESS': False,
+}
+
+# Staging server settings for remote testing
+# 远程测试的 staging 服务器设置
+STAGING_SERVER = os.environ.get('STAGING_SERVER', 'localhost')
+
+# Silence logging during tests
+# 测试期间减少日志输出
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    LOGGING['handlers']['console']['level'] = 'WARNING'
+    LOGGING['loggers']['django']['level'] = 'WARNING'
+    LOGGING['loggers']['accounts']['level'] = 'WARNING'

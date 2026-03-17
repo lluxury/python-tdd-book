@@ -15,7 +15,14 @@
             <div class="container">
                 <span class="navbar-brand">To-Do Lists</span>
                 <div id="auth-section">
-                    <a id="login" class="navbar-link" href="#">Sign in</a>
+                    {% if user.is_authenticated %}
+                        <span>
+                            {{ user.email }}
+                            <a id="login" class="navbar-link" href="/accounts/logout/">Sign out</a>
+                        </span>
+                    {% else %}
+                        <a id="login" class="navbar-link" href="#">Sign in</a>
+                    {% endif %}
                 </div>
             </div>
         </nav>

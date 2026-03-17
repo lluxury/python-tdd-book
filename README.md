@@ -159,6 +159,20 @@ print(session.get_decoded())
 {'_auth_user_id': '1', '_auth_user_backend': 'accounts.views.EmailBackend', '_auth_user_hash': '58856ebbb2e795f3f8759e7b6e69af2ec4bbd9584fbb129b48416102b9c35e6e'}
 ```
 
+17
+
+1. 在功能测试里建一个list测试，用事先创建好会话，跳过登录过程
+2. 移植的wait开头函数， id，登录，登出，需要可以接收任意邮件地址
+3. 检测用户发现自己已经登录
+4. 写一个Gunicorn的配置，不一定要用，但是有，保留访问和错误日志，及对应setting配置
+5. 在功能测试里面建一个管理模块，模块下面有一个命令模块，在下面建一个建立session的测试
+6. 把功能测试加入settings，并测试
+7. 调整 test_my_lists 使之可以在非本地运行，在base中设定 self.against_staging 
+8. 使用subprocess实现，在远端服务器建立session及测试完还原远端数据库，不要测试，仅写代码，或者数据库路径，获取manage文件
+9. 为日志行为编写测试 accounts/tests/test_authentication 里面增加日志输出
+
+ALLOWED_HOSTS 配置
+
 前言　　xv
  准备工作和应具备的知识　　xxi
  致谢　　xxvii
@@ -385,9 +399,11 @@ print(session.get_decoded())
  把测试当作文档　　281
  用户已经通过认证　　282
  16.5　关键时刻：功能测试能通过吗　　283
- 16.6　完善功能测试，测试退出功能　　284
- 第17章　测试固件、日志和服务器端调试　　287
- 17.1　事先创建好会话，跳过登录过程　　287
+ 16.6　完善功能测试，测试退出功能　　284  
+
+### 17　测试固件、日志和服务器端调试　
+
+17.1　事先创建好会话，跳过登录过程　　287
  17.2　实践是检验真理的唯一标准：在过渡服务器中捕获最后的问题　　290
  设置日志　　291
  修正Persona引起的这个问题　　293

@@ -1,0 +1,1 @@
+ERROR 2026-03-15 23:40:12,035 views Auth error: 'WSGIRequest' object has no attribute 'session'
