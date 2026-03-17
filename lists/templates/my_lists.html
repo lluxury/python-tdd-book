@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>My Lists</h2>
+
+    {% if lists %}
+        <div class="list-group">
+            {% for list in lists %}
+                <a href="{{ list.get_absolute_url }}" class="list-group-item list-group-item-action">
+                    {{ list.name }}
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You haven't created any lists yet. <a href="{% url 'home_page' %}">Create your first list!</a></p>
+    {% endif %}
+{% endblock %}

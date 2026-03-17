@@ -173,6 +173,55 @@ print(session.get_decoded())
 
 ALLOWED_HOSTS 配置
 
+18
+
+1. 建立多个功能测试，实现我的list：已登录用户查看保存的list，已登录用户，访问首页，建立list，my list链接，以创建的第一个代办事项命名，再建个清单，my list页也显示出了新的清单，退出出 my list链接消失
+2. 建立view测试，测试我的list链接renders我的链接的模版
+3. 再建view测试，list属主有被记录，如果用户是通过认证的
+4. 建立模型测试，list能拥有属主，另一个测试list的属主可选
+5. 模型测试，list的名字是第一个item的文字
+
+19
+
+1. 建一个新分支，暂时屏蔽清单的.owner 属性，重跑view测试，list属主有被记录，如果用户是通过认证的，失败先不要修复（下面的任务也是）
+2. 改造上个任务的测试，用模拟的方式让视图层认为清单有属主，mock_list ，测试后在测试里面建一个子函数，检查属主的指定，定义side_effect，完成测试
+3. 重构测试，把任务交给表单，
+4. 把NewListTest类重命名为NewListViewIntegratedTest，把尝试使用驭件保存属性的测试代码删掉，换成整合版本，并暂时skip
+5. 从头编写测试，完全隔离，看隔离测试能否驱动写出new_list 视图的替代版本，命名为new_list2
+6. 使用驭件模拟表单，使用 unittest.TestCase, 使用new_list2的 test_views，setUp,test_passes_POST_data_to_NewListForm
+7. 视图测试，test_redirects_to_form_returned_object_if_form_valid
+8. test_renders_home_template_with_form_if_form_invalid
+9. test_does_not_save_if_form_invalid
+10. test_save_creates_new_list_and_item_form_post_data, 子函数check_item_text_and_list
+11. test_save_creates_new_list_from_post_data_if_user_not_authenticated
+12. test_save_creates_new_list_from_post_data_if_user_authenticated
+13. 模型层写整合测试，test_get_absoluted_url, test_create_new_creates_list_and_first_item,
+14. test_create_new_optionally_saves_owner
+15. 换掉之前的视图，用新视图试试，删除掉之间的skip标记，使用new_list2测试，
+16. 更新视图测试，test_redirects_to_form_returned_object_if_form_valid，使用mock_form.save.return_value
+17. 审查视图测试中的每个测试，是否忽视了隐含假设，
+18. 新增表单测试，确保表单返回刚保存的清单，尝试修复先前各项失败的测试，
+19. 使用模型测试，test_list_name_is_first_item_text
+20. 清理多余测试：表单层save方法的测试，之间的 new_list 视图，并把new_list2改名回去，其他一些视图层的测试（保留 test保存一个post请求，test失效的输入不保存但报错，test保存list的owner如果用户已登录），
+21. 测试成功后，代码合并回主分支
+     什么时候编写隔离测试，什么时候编写整合测试？（Django Test Client（不启动真实浏览器））
+     功能测试，整合测试，隔离测试（不是太懂），解耦应用代码和ORM代码（Item.objects，目前没解）
+
+原始问题
+
+- 过度依赖数据库 - 视图测试每次都访问数据库
+- 测试脆弱 - 改一个字段导致大量测试失败
+- 耦合度高 - 视图、表单、模型紧密耦合
+- 难以定位错误 - 整合测试无法快速定位问题在哪一层
+
+21
+
+1. 新建多个功能测试：有2个用户使用addCleanup，a已登录，b也在使用，a访问首页，新建清单，然后看到分享清单选项，填写b的邮件地址，再点分享按钮
+2. 拆封功能测试的辅助代码，使用页面模式，定义list_page类，新建清单，分享清单后页面更新，获取分享框，获取list分享，分享list，
+3. 功能测试，b在访问清单，b看到了a分享的清单，
+4. 到我的list页面，
+5. b看到了a的清单，b在清单上加了一个项目，a刷新页面看到了新增项目
+
 前言　　xv
  准备工作和应具备的知识　　xxi
  致谢　　xxvii
@@ -412,9 +461,11 @@ ALLOWED_HOSTS 配置
  让功能测试在服务器上运行管理命令　　296
  使用subprocess模块完成额外的工作　　298
  17.4　集成日志相关的代码　　301
- 17.5　小结　　304
- 第18章　完成“My Lists”页面：由外而内的TDD　　305
- 18.1　对立技术：“由内而外”　　305
+ 17.5　小结　　304  
+
+### 18　完成“My Lists”页面：由外而内的TDD　　
+
+18.1　对立技术：“由内而外”　　305
  18.2　为什么选择使用“由外而内”　　306
  18.3　“My Lists”页面的功能测试　　306
  18.4　外层：表现层和模板　　307
@@ -424,9 +475,11 @@ ALLOWED_HOSTS 配置
  使用模板设计API　　310
  移到下一层：视图向模板中传入什么　　311
  18.7　视图层的下一个需求：新建清单时应该记录属主　　312
- 18.8　下移到模型层　　313
- 第19章　测试隔离和“倾听测试的心声”　　318
- 19.1　重温抉择时刻：视图层依赖于尚未编写的模型代码　　318
+ 18.8　下移到模型层　　313  
+
+### 19　测试隔离和“倾听测试的心声”　　
+
+19.1　重温抉择时刻：视图层依赖于尚未编写的模型代码　　318
  19.2　首先尝试使用驭件实现隔离　　319
  19.3　倾听测试的心声：丑陋的测试表明需要重构　　322
  19.4　以完全隔离的方式重写视图测试　　323
@@ -460,9 +513,11 @@ ALLOWED_HOSTS 配置
  20.7　使用PhantomJS运行QUnit JavaScript测试　　361
  安装node　　361
  在Jenkins中添加构建步骤　　362
- 20.8　CI 服务器能完成的其他操作　　364
- 第21章　简单的社会化功能、页面模式，以及练习　　365
- 21.1　有多个用户以及使用addCleanup 的功能测试　　365
+ 20.8　CI 服务器能完成的其他操作　　364  
+
+### 21　简单的社会化功能、页面模式，以及练习　　
+
+21.1　有多个用户以及使用addCleanup 的功能测试　　365
  21.2　实现Selenium交互等待模式　　367
  21.3　页面模式　　368
  21.4　扩展功能测试测试第二个用户和“My Lists”页面　　371

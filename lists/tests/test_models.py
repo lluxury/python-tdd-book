@@ -90,3 +90,158 @@ class ListModelTest(TestCase):
         self.assertEqual(items[0], item1)
         self.assertEqual(items[1], item2)
         self.assertEqual(items[2], item3)
+
+
+class ListOwnerTest(TestCase):
+    """测试List模型属主功能"""
+
+    def setUp(self):
+        """设置测试用户"""
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        self.user = User.objects.create_user(email='test@example.com')
+
+    def test_list_can_have_owner(self):
+        """测试list可以拥有属主"""
+        list_ = List.objects.create(owner=self.user)
+
+        # Check that the list has an owner
+        self.assertEqual(list_.owner, self.user)
+
+    def test_list_owner_is_optional(self):
+        """测试list的属主是可选的（可以None）"""
+        # Create a list without an owner
+        list_ = List.objects.create()
+
+        # Check that the list's owner is None
+        self.assertIsNone(list_.owner)
+
+    def test_list_owner_field_exists(self):
+        """测试list模型有owner字段"""
+        # Check that the owner field exists in the model
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+
+        # Get the owner field from the model
+        owner_field = List._meta.get_field('owner')
+
+        # Check that it's a ForeignKey to User model
+        self.assertEqual(owner_field.related_model, User)
+
+    def test_list_owner_can_be_null(self):
+        """测试list的owner字段允许null值"""
+        # Check that the owner field can be null
+        owner_field = List._meta.get_field('owner')
+
+        # null should be True
+        self.assertTrue(owner_field.null)
+
+    def test_list_owner_can_be_blank(self):
+        """测试list的owner字段允许blank值"""
+        # Check that the owner field can be blank in forms
+        owner_field = List._meta.get_field('owner')
+
+        # blank should be True
+        self.assertTrue(owner_field.blank)
+
+    def test_list_owner_on_delete_cascade(self):
+        """测试当属主被删除时，list也被删除"""
+        # Create a list with an owner
+        list_ = List.objects.create(owner=self.user)
+        list_id = list_.id
+
+        # Delete the user
+        self.user.delete()
+
+        # Check that the list is also deleted
+        self.assertFalse(List.objects.filter(id=list_id).exists())
+
+    def test_list_owners_are_different(self):
+        """测试不同list可以有不同属主"""
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+
+        user1 = User.objects.create_user(email='user1@example.com')
+        user2 = User.objects.create_user(email='user2@example.com')
+
+        list1 = List.objects.create(owner=user1)
+        list2 = List.objects.create(owner=user2)
+
+        # Check that each list has its own owner
+        self.assertEqual(list1.owner, user1)
+        self.assertEqual(list2.owner, user2)
+        self.assertNotEqual(list1.owner, list2.owner)
+
+    def test_list_without_owner_can_have_items(self):
+        """测试没有属主的list可以有items"""
+        # Create a list without an owner
+        list_ = List.objects.create()
+
+        # Add items to the list
+        item1 = Item.objects.create(list=list_, text='Item 1')
+        item2 = Item.objects.create(list=list_, text='Item 2')
+
+        # Check that the list has items
+        self.assertEqual(list_.item_set.count(), 2)
+        self.assertIn(item1, list_.item_set.all())
+        self.assertIn(item2, list_.item_set.all())
+
+
+class ListNameTest(TestCase):
+    """测试List名字功能"""
+
+    def test_list_name_returns_first_item_text(self):
+        """测试list名字返回第一个item的文本"""
+        # Create a list with items
+        list_ = List.objects.create()
+        Item.objects.create(list=list_, text='Buy peacock feathers')
+        Item.objects.create(list=list_, text='Buy milk')
+
+        # Check that the list name is the first item's text
+        self.assertEqual(list_.name, 'Buy peacock feathers')
+
+    def test_list_name_returns_empty_list_for_no_items(self):
+        """测试没有items的list名字返回'Empty List'"""
+        # Create a list without items
+        list_ = List.objects.create()
+
+        # Check that the list name is 'Empty List'
+        self.assertEqual(list_.name, 'Empty List')
+
+    def test_list_name_uses_first_item_even_with_many(self):
+        """测试即使有多个items，list名字仍使用第一个"""
+        # Create a list with multiple items
+        list_ = List.objects.create()
+        Item.objects.create(list=list_, text='First item')
+        Item.objects.create(list=list_, text='Second item')
+        Item.objects.create(list=list_, text='Third item')
+
+        # Check that the list name is still the first item's text
+        self.assertEqual(list_.name, 'First item')
+
+    def test_list_name_updates_when_first_item_changes(self):
+        """测试当第一个item改变时，list名字也会改变"""
+        # Create a list with an item
+        list_ = List.objects.create()
+        item = Item.objects.create(list=list_, text='Original item')
+
+        # Check initial name
+        self.assertEqual(list_.name, 'Original item')
+
+        # Update the item text
+        item.text = 'Updated item'
+        item.save()
+
+        # Check that the list name has changed
+        self.assertEqual(list_.name, 'Updated item')
+
+    def test_list_name_is_dynamic_property(self):
+        """测试list名字是动态属性（不是数据库字段）"""
+        # Create a list
+        list_ = List.objects.create()
+
+        # Check that name is a property, not a field
+        self.assertTrue(hasattr(list_, 'name'))
+        self.assertTrue(isinstance(type(list_).name, property))
+
+

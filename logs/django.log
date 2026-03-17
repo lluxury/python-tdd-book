@@ -1,1 +1,1597 @@
 ERROR 2026-03-15 23:40:12,035 views Auth error: 'WSGIRequest' object has no attribute 'session'
+ERROR 2026-03-17 14:03:08,255 views Auth error: 'WSGIRequest' object has no attribute 'session'
+ERROR 2026-03-17 16:43:24,559 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\test_tdd\superlists\lists\views.py", line 17, in home_page
+    form.save(for_list=list_)
+  File "D:\test_tdd\superlists\lists\forms.py", line 35, in save
+    return super().save()
+  File "D:\test\.venv\lib\site-packages\django\forms\models.py", line 554, in save
+    self.instance.save()
+  File "D:\test\.venv\lib\site-packages\django\db\models\base.py", line 857, in save
+    self._prepare_related_fields_for_save(operation_name="save")
+  File "D:\test\.venv\lib\site-packages\django\db\models\base.py", line 1242, in _prepare_related_fields_for_save
+    raise ValueError(
+ValueError: save() prohibited to prevent data loss due to unsaved related object 'list'.
+ERROR 2026-03-17 16:43:24,823 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\test_tdd\superlists\lists\views.py", line 12, in home_page
+    list_ = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1179, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "D:\test_tdd\superlists\lists\tests\test_list_owner_mock.py", line 126, in mock_create
+    list_obj = List.objects.create()
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1113, in __call__
+    self._increment_mock_call(*args, **kwargs)
+  File "C:\Users\yann\AppData\Roaming\uv\python\cpython-3.10-windows-x86_64-none\lib\unittest\mock.py", line 1121, in _increment_mock_call
+    self.called = True
+RecursionError: maximum recursion depth exceeded
+ERROR 2026-03-17 16:43:24,904 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\test_tdd\superlists\lists\views.py", line 17, in home_page
+    form.save(for_list=list_)
+  File "D:\test_tdd\superlists\lists\forms.py", line 31, in save
+    self.instance.list = for_list
+  File "D:\test\.venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 291, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Mock name='create()' id='1771358011456'>": "Item.list" must be a "List" instance.
+ERROR 2026-03-17 17:01:15,012 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\test_tdd\superlists\lists\views.py", line 59, in new_list2
+    form.save()
+TypeError: ItemForm.save() missing 1 required positional argument: 'for_list'
+ERROR 2026-03-17 17:01:15,023 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\test\.venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\test_tdd\superlists\lists\views.py", line 59, in new_list2
+    form.save()
+TypeError: ItemForm.save() missing 1 required positional argument: 'for_list'
+ERROR 2026-03-17 17:05:30,260 views Auth error: 'WSGIRequest' object has no attribute 'session'
+WARNING 2026-03-17 18:47:44,565 selenium_manager Problem reading geckodriver versions: error sending request for url (https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/geckodriver/geckodriver-support.json). Using latest geckodriver version
+WARNING 2026-03-17 18:47:44,565 selenium_manager There was an error managing geckodriver (error sending request for url (https://github.com/mozilla/geckodriver/releases/latest)); using driver found in the cache
+WARNING 2026-03-17 19:17:56,360 connectionpool Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)': /session/71a53b30-5398-409f-9fa2-31dbf9e21429
+INFO 2026-03-17 19:39:35,571 autoreload Watching for file changes with StatReloader
+INFO 2026-03-17 19:40:06,689 basehttp "GET / HTTP/1.1" 200 3037
+INFO 2026-03-17 19:40:07,176 basehttp "GET /static/css/base.css HTTP/1.1" 200 187
+INFO 2026-03-17 19:40:07,217 basehttp "GET /static/js/accounts.js HTTP/1.1" 200 5681
+WARNING 2026-03-17 19:40:08,298 basehttp "GET /favicon.ico HTTP/1.1" 404 2881
+INFO 2026-03-17 19:40:10,212 basehttp "POST / HTTP/1.1" 302 0
+INFO 2026-03-17 19:40:10,232 basehttp "GET /lists/1/ HTTP/1.1" 200 3829
+WARNING 2026-03-17 19:49:48,321 selenium_manager Problem reading geckodriver versions: error sending request for url (https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/geckodriver/geckodriver-support.json). Using latest geckodriver version
+WARNING 2026-03-17 19:49:48,322 selenium_manager There was an error managing geckodriver (error sending request for url (https://github.com/mozilla/geckodriver/releases/latest)); using driver found in the cache
+WARNING 2026-03-17 19:50:24,142 selenium_manager Problem reading geckodriver versions: error sending request for url (https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/geckodriver/geckodriver-support.json). Using latest geckodriver version
+WARNING 2026-03-17 19:50:24,142 selenium_manager There was an error managing geckodriver (error sending request for url (https://github.com/mozilla/geckodriver/releases/latest)); using driver found in the cache
+WARNING 2026-03-17 19:51:08,866 selenium_manager Problem reading geckodriver versions: error sending request for url (https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/geckodriver/geckodriver-support.json). Using latest geckodriver version
+WARNING 2026-03-17 19:51:08,867 selenium_manager There was an error managing geckodriver (error sending request for url (https://github.com/mozilla/geckodriver/releases/latest)); using driver found in the cache
+WARNING 2026-03-17 19:51:44,439 selenium_manager Problem reading geckodriver versions: error sending request for url (https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/geckodriver/geckodriver-support.json). Using latest geckodriver version
+WARNING 2026-03-17 19:51:44,439 selenium_manager There was an error managing geckodriver (error sending request for url (https://github.com/mozilla/geckodriver/releases/latest)); using driver found in the cache
+WARNING 2026-03-17 19:52:58,470 selenium_manager Problem reading geckodriver versions: error sending request for url (https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/geckodriver/geckodriver-support.json). Using latest geckodriver version
+WARNING 2026-03-17 19:52:58,470 selenium_manager There was an error managing geckodriver (error sending request for url (https://github.com/mozilla/geckodriver/releases/latest)); using driver found in the cache
+WARNING 2026-03-17 19:53:14,558 selenium_manager Problem reading geckodriver versions: error sending request for url (https://raw.githubusercontent.com/SeleniumHQ/selenium/trunk/common/geckodriver/geckodriver-support.json). Using latest geckodriver version

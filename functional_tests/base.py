@@ -51,9 +51,11 @@ class FunctionalTest(LiveServerTestCase):
         """辅助方法：获取错误消息元素"""
         return self.browser.find_element(By.CSS_SELECTOR, ".has-error")
 
-    def wait_for_element(self, locator, timeout=10):
+    def wait_for_element(self, locator, timeout=10, browser=None):
         """辅助函数：等待元素出现"""
-        return WebDriverWait(self.browser, timeout).until(
+        if browser is None:
+            browser = self.browser
+        return WebDriverWait(browser, timeout).until(
             expected_conditions.presence_of_element_located(locator)
         )
 
@@ -63,9 +65,11 @@ class FunctionalTest(LiveServerTestCase):
             lambda d: d.find_element(By.ID, element_id)
         )
 
-    def wait_for_text(self, text, timeout=10):
+    def wait_for_text(self, text, timeout=10, browser=None):
         """辅助函数：等待文本出现在页面中"""
-        return WebDriverWait(self.browser, timeout).until(
+        if browser is None:
+            browser = self.browser
+        return WebDriverWait(browser, timeout).until(
             lambda d: text in d.find_element(By.TAG_NAME, 'body').text
         )
 

@@ -17,6 +17,8 @@
                 <div id="auth-section">
                     {% if user.is_authenticated %}
                         <span>
+                            <a id="my-lists" class="navbar-link" href="{% url 'my_lists' %}">My Lists</a>
+                            |
                             {{ user.email }}
                             <a id="login" class="navbar-link" href="/accounts/logout/">Sign out</a>
                         </span>
